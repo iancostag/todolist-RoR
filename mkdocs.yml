@@ -6,3 +6,6 @@ repo_name: GitHub
 
 theme:
   name: material
+
+nav:
+  - Home: ./docs/index.md
