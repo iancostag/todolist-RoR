@@ -1,0 +1,8 @@
+site_name: TodoList
+site_url: https://iancostag.github.io/todolist-RoR/
+
+repo_url: https://github.com/iancostag/todolist-RoR
+repo_name: GitHub
+
+theme:
+  name: material
