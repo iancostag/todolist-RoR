@@ -1,36 +1,28 @@
-name: Deploy MkDocs to GitHub Pages
+  name: Deploy MkDocs to GitHub Pages
 
-on:
-  push:
-    branches:
-      - pages
+  on:
+    push:
+      branches:
+        - pages
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
+  jobs:
+    deploy:
+      runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout do código
-        uses: actions/checkout@v4
+      steps:
+        - name: Checkout do código
+          uses: actions/checkout@v4
 
-      - name: Configurar Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: '3.11'
+        - name: Configurar Python
+          uses: actions/setup-python@v5
+          with:
+            python-version: '3.11'
 
-      - name: Instalar dependências
-        run: |
-          pip install mkdocs-material
+        - name: Instalar dependências
+          run: |
+            pip install mkdocs-material
 
-      - name: Configurar git com GITHUB_TOKEN
-        run: |
-          git config --global user.email "actions@github.com"
-          git config --global user.name "github-actions"
-          git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
+        - name: Build e deploy com MkDocs
 
-
-
-      - name: Build e deploy com MkDocs
-
-        run: |
-          mkdocs gh-deploy --force
+          run: |
+            mkdocs gh-deploy --force
