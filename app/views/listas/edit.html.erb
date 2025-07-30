@@ -1,0 +1,12 @@
+<% content_for :title, "Editing lista" %>
+
+<h1>Editing lista</h1>
+
+<%= render "form", lista: @lista %>
+
+<br>
+
+<div>
+  <%= link_to "Show this lista", @lista %> |
+  <%= link_to "Back to listas", listas_path %>
+</div>

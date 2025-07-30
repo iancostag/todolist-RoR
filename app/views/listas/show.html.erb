@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @lista %>
+
+<div>
+  <%= link_to "Edit this lista", edit_lista_path(@lista) %> |
+  <%= link_to "Back to listas", listas_path %>
+
+  <%= button_to "Destroy this lista", @lista, method: :delete %>
+</div>
