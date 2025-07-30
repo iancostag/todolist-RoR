@@ -26,4 +26,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
         run: |
-          mkdocs gh-deploy --force --clean --remote-branch gh-pages --remote-name origin
+          mkdocs gh-deploy --config-file docs/mkdocs.yml --force --clean --remote-branch gh-pages --remote-name origin
