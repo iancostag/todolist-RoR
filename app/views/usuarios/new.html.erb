@@ -1,0 +1,20 @@
+<h1>Cadastro</h1>
+
+<%= form_with model: @usuario, url: usuarios_path, method: :post do |f| %>
+  <div class="mb-3">
+    <%= f.label :email %>
+    <%= f.email_field :email, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :password %>
+    <%= f.password_field :password, class: "form-control" %>
+  </div>
+
+  <div class="mb-3">
+    <%= f.label :password_confirmation, "Confirmação de Senha" %>
+    <%= f.password_field :password_confirmation, class: "form-control" %>
+  </div>
+
+  <%= f.submit "Criar Conta", class: "btn btn-success" %>
+<% end %>

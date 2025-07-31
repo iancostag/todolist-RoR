@@ -1,15 +1,6 @@
-# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  titulo: MyString
-  descricao: MyString
+tarefa_um:
+  titulo: Estudar Rails
+  descricao: Fazer testes de integração
   concluida: false
-  prazo: 2025-07-30
-  lista: one
-
-two:
-  titulo: MyString
-  descricao: MyString
-  concluida: false
-  prazo: 2025-07-30
-  lista: two
+  prazo: <%= Date.today + 1.day %>
+  lista: lista_um
