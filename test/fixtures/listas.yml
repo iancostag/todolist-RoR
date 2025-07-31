@@ -1,4 +1,9 @@
-lista_um:
+one:
   titulo: Lista de tarefas do dia
   descricao: Importantes
-  usuario: usuario_teste
+  usuario: one
+
+two:
+  titulo: Lista de Tarefas do user 2
+  descricao: teste de descricao
+  usuario: two

@@ -6,6 +6,14 @@ module ActiveSupport
   class TestCase
     # Run tests in parallel with specified workers
     parallelize(workers: :number_of_processors)
+  # test/test_helper.rb
+
+  class ActionDispatch::IntegrationTest
+    def log_in_as(usuario)
+      post login_path, params: { email: usuario.email, password: "123456" }
+      follow_redirect!
+    end
+  end
 
     # Setup all fixtures in test/fixtures/*.yml for all tests in alphabetical order.
     fixtures :all
