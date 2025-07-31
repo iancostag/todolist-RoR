@@ -1,6 +1,6 @@
-tarefa_um:
+one:
   titulo: Estudar Rails
   descricao: Fazer testes de integração
   concluida: false
   prazo: <%= Date.today + 1.day %>
-  lista: lista_um
+  lista: one
