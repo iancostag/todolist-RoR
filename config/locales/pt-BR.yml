@@ -1,0 +1,53 @@
+pt-BR:
+  activerecord:
+    models:
+      lista: "Lista"
+      tarefa: "Tarefa"
+    attributes:
+      lista:
+        titulo: "Título"
+        descricao: "Descrição"
+      tarefa:
+        titulo: "Título"
+        descricao: "Descrição"
+        prazo: "Prazo"
+        concluida: "Concluída"
+        lista: "Lista"
+
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      blank: "não pode ficar em branco"
+      too_short: "é muito curto (mínimo: %{count} caracteres)"
+      too_long: "é muito longo (máximo: %{count} caracteres)"
+      wrong_length: "deve ter %{count} caracteres"
+      taken: "já está em uso"
+      confirmation: "não coincide com a confirmação"
+      accepted: "deve ser aceito"
+      not_a_number: "não é um número"
+      greater_than: "deve ser maior que %{count}"
+      less_than: "deve ser menor que %{count}"
+      invalid: "não é válido"
+
+  flash:
+    listas:
+      create:
+        success: "Lista criada com sucesso!"
+        failure: "Erro ao criar lista."
+      update:
+        success: "Lista atualizada com sucesso!"
+        failure: "Erro ao atualizar lista."
+      destroy:
+        success: "Lista excluída com sucesso!"
+        failure: "Erro ao excluir lista."
+
+    tarefas:
+      create:
+        success: "Tarefa criada com sucesso!"
+        failure: "Erro ao criar tarefa."
+      update:
+        success: "Tarefa atualizada com sucesso!"
+        failure: "Erro ao atualizar tarefa."
+      destroy:
+        success: "Tarefa excluída com sucesso!"
+        failure: "Erro ao excluir tarefa."

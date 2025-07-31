@@ -1,16 +1,29 @@
-<p style="color: green"><%= notice %></p>
-
 <% content_for :title, "Listas" %>
 
-<h1>Listas</h1>
+<h1 class="mb-4">Minhas ToDo Lists</h1>
 
-<div id="listas">
-  <% @listas.each do |lista| %>
-    <%= render lista %>
-    <p>
-      <%= link_to "Show this lista", lista %>
-    </p>
-  <% end %>
-</div>
+<%= link_to "Nova Lista", new_lista_path, class: "btn btn-primary mb-4" %>
 
-<%= link_to "New lista", new_lista_path %>
+<% if @listas.any? %>
+  <div class="row">
+    <% @listas.each do |lista| %>
+      <div class="col-md-6 mb-3">
+        <div class="card shadow-sm">
+          <div class="card-body">
+            <h5 class="card-title"><%= lista.titulo %></h5>
+
+            <div class="d-flex justify-content-between">
+              <%= link_to "Ver Detalhes", lista_path(lista), class: "btn btn-outline-primary btn-sm" %>
+              <div>
+                <%= link_to "Editar", edit_lista_path(lista), class: "btn btn-outline-info btn-sm me-2" %>
+                <%= link_to "Excluir", lista_path(lista), method: :delete, data: { confirm: "Tem certeza?" }, class: "btn btn-outline-danger btn-sm" %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <div class="alert alert-info">Nenhuma lista encontrada.</div>
+<% end %>

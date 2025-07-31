@@ -1,0 +1,81 @@
+:root {
+  --primary: #1F3A93;     
+  --secondary: #ECEFF1;   
+  --success: #2ECC71;      
+  --danger: #E74C3C;       
+  --background: #F5F7FA;   
+  --text: #2C3E50;         
+}
+
+body {
+  background-color: var(--background);
+  color: var(--text);
+}
+
+.card {
+  border: 1px solid #dfe6e9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.card-header {
+  background-color: var(--primary);
+  color: white;
+  font-weight: 500;
+}
+
+.btn-primary {
+  background-color: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn-primary:hover {
+  background-color: #16346F;
+  border-color: #16346F;
+}
+
+.btn-success {
+  background-color: var(--success);
+  border-color: var(--success);
+}
+
+.btn-success:hover {
+  background-color: #27ae60;
+  border-color: #27ae60;
+}
+
+.btn-outline-secondary {
+  color: var(--primary);
+  border-color: var(--primary);
+}
+
+.btn-outline-secondary:hover {
+  background-color: var(--primary);
+  color: white;
+}
+
+.form-label {
+  font-weight: 500;
+  color: var(--primary);
+}
+
+.form-control {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.alert-danger {
+  background-color: #FDEDEC;
+  border-color: var(--danger);
+  color: var(--danger);
+}
+
+a {
+  color: var(--primary);
+  text-decoration: none;
+}
+
+a:hover {
+  color: #16346F;
+  text-decoration: underline;
+}

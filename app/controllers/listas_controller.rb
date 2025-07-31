@@ -25,10 +25,10 @@ class ListasController < ApplicationController
 
     respond_to do |format|
       if @lista.save
-        format.html { redirect_to @lista, notice: "Lista was successfully created." }
+        format.html { redirect_to @lista, notice: t("flash.listas.create.success") }
         format.json { render :show, status: :created, location: @lista }
       else
-        format.html { render :new, status: :unprocessable_entity }
+        format.html { flash.now[:alert] = t("flash.listas.create.failure"); render :new, status: :unprocessable_entity }
         format.json { render json: @lista.errors, status: :unprocessable_entity }
       end
     end
@@ -38,10 +38,10 @@ class ListasController < ApplicationController
   def update
     respond_to do |format|
       if @lista.update(lista_params)
-        format.html { redirect_to @lista, notice: "Lista was successfully updated." }
+        format.html { redirect_to @lista, notice: t("flash.listas.update.success") }
         format.json { render :show, status: :ok, location: @lista }
       else
-        format.html { render :edit, status: :unprocessable_entity }
+        format.html { flash.now[:alert] = t("flash.listas.update.failure"); render :edit, status: :unprocessable_entity }
         format.json { render json: @lista.errors, status: :unprocessable_entity }
       end
     end
@@ -52,7 +52,7 @@ class ListasController < ApplicationController
     @lista.destroy!
 
     respond_to do |format|
-      format.html { redirect_to listas_path, status: :see_other, notice: "Lista was successfully destroyed." }
+      format.html { redirect_to listas_path, status: :see_other, notice: t("flash.listas.destroy.success") }
       format.json { head :no_content }
     end
   end
@@ -60,11 +60,11 @@ class ListasController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_lista
-      @lista = Lista.find(params.expect(:id))
+      @lista = Lista.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
     def lista_params
-      params.expect(lista: [ :titulo, :descricao ])
+      params.require(:lista).permit(:titulo, :descricao)
     end
 end

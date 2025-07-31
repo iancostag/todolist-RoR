@@ -1,11 +1,20 @@
-<% content_for :title, "New lista" %>
+<% content_for :title, "Nova Lista" %>
 
-<h1>New lista</h1>
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card shadow">
+        <div class="card-header bg-primary text-white">
+          <h5 class="mb-0">Criar nova lista</h5>
+        </div>
+        <div class="card-body">
+          <%= render "form", lista: @lista %>
 
-<%= render "form", lista: @lista %>
-
-<br>
-
-<div>
-  <%= link_to "Back to listas", listas_path %>
+          <div class="mt-3">
+            <%= link_to "Voltar para as listas", listas_path, class: "btn btn-outline-secondary" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
