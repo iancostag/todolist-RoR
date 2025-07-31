@@ -1,0 +1,24 @@
+require "test_helper"
+
+class LoginTest < ActionDispatch::IntegrationTest
+  def setup
+    @usuario = Usuario.create!(
+      email: "teste@email.com",
+      password: "123456",
+      password_confirmation: "123456"
+    )
+  end
+
+  test "login com credenciais válidas" do
+    post login_path, params: { email: @usuario.email, password: "123456" }
+    assert_redirected_to listas_path
+    follow_redirect!
+    assert_match "Login realizado com sucesso", response.body
+  end
+
+  test "login com credenciais inválidas" do
+    post login_path, params: { email: @usuario.email, password: "errada" }
+    assert_response :unprocessable_entity
+    assert_match "Email ou senha inválidos", response.body
+  end
+end

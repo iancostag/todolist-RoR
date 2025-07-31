@@ -1,9 +1,10 @@
 class ListasController < ApplicationController
+  before_action :requer_login
   before_action :set_lista, only: %i[ show edit update destroy ]
 
   # GET /listas or /listas.json
   def index
-    @listas = Lista.all
+    @listas = current_usuario.listas
   end
 
   # GET /listas/1 or /listas/1.json
@@ -21,7 +22,7 @@ class ListasController < ApplicationController
 
   # POST /listas or /listas.json
   def create
-    @lista = Lista.new(lista_params)
+    @lista = current_usuario.listas.new(lista_params)
 
     respond_to do |format|
       if @lista.save
@@ -60,7 +61,7 @@ class ListasController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_lista
-      @lista = Lista.find(params[:id])
+      @lista = current_usuario.listas.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

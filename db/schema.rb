@@ -10,22 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_07_30_202745) do
+ActiveRecord::Schema[8.0].define(version: 2025_07_31_172213) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
-
-  create_table "lista", force: :cascade do |t|
-    t.string "titulo"
-    t.string "descricao"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
 
   create_table "listas", force: :cascade do |t|
     t.string "titulo"
     t.string "descricao"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.bigint "usuario_id", null: false
+    t.index ["usuario_id"], name: "index_listas_on_usuario_id"
   end
 
   create_table "tarefas", force: :cascade do |t|
@@ -39,5 +34,13 @@ ActiveRecord::Schema[8.0].define(version: 2025_07_30_202745) do
     t.index ["lista_id"], name: "index_tarefas_on_lista_id"
   end
 
+  create_table "usuarios", force: :cascade do |t|
+    t.string "email"
+    t.string "password_digest"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "listas", "usuarios"
   add_foreign_key "tarefas", "listas"
 end
