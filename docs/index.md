@@ -37,10 +37,11 @@
     <tr>
       <td>US 1.1.1</td>
       <td>MUST</td>
-      <td>Como usuário, quero logar na aplicação para ter controle das minhas todolists.</td>
+      <td>Como usuário, quero me cadastrar e logar na aplicação para ter controle das minhas todolists.</td>
       <td>
+        - Tela de Cadastro com confirmação de senha.<br>
         - Tela de login com campos obrigatórios.<br>
-        - Após autenticação, redirecionar para dashboard do usuário.<br>
+        - Após autenticação, redirecionar para as listas do usuário.<br>
         - Mensagem clara de erro em caso de falha.
       </td>
     </tr>

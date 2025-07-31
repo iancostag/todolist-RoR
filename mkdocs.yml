@@ -9,4 +9,5 @@ theme:
 
 nav:
   - Backlog: index.md
+  - Requisitos: paginas/requisitos.md
   - Modelagem do Banco de Dados: paginas/modelagem.md
