@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  root to: "sessoes#new"
   get "usuarios/new"
   get "usuarios/create"
   # cruds
