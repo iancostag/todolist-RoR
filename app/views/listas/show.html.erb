@@ -26,3 +26,43 @@
     </div>
   </div>
 </div>
+<div class="container mt-4">
+  <h3>Tarefas da Lista</h3>
+
+  <% if @lista.tarefas.any? %>
+    <ul class="list-group">
+      <% @lista.tarefas.each do |tarefa| %>
+        <% atrasada = !tarefa.concluida? && tarefa.prazo.present? && tarefa.prazo < Date.today %>
+        <% status_label, status_class = if tarefa.concluida?
+                                          ["Concluída", "bg-success"]
+                                        elsif atrasada
+                                          ["Atrasada", "bg-danger"]
+                                        else
+                                          ["Pendente", "bg-warning text-dark"]
+                                        end %>
+
+        <li class="list-group-item">
+          <div class="d-flex justify-content-between align-items-start">
+            <div>
+              <strong><%= tarefa.titulo %></strong><br>
+              <small class="text-muted"><%= tarefa.descricao %></small><br>
+              <% if tarefa.prazo %>
+                <small>Prazo: <%= l(tarefa.prazo, format: :long) %></small><br>
+              <% end %>
+              <span class="badge <%= status_class %> mt-2"><%= status_label %></span>
+            </div>
+            <div class="btn-group">
+              <%= link_to "Editar", edit_tarefa_path(tarefa), class: "btn btn-sm btn-outline-primary" %>
+              <%= button_to "Excluir", tarefa_path(tarefa),
+                  method: :delete,
+                  data: { confirm: "Tem certeza que deseja excluir esta tarefa?" },
+                  class: "btn btn-sm btn-outline-danger" %>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p class="text-muted">Nenhuma tarefa cadastrada nesta lista.</p>
+  <% end %>
+</div>
