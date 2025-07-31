@@ -1,16 +1,14 @@
 ## 1.1 Introdução ao Desafio, negócio e Contexto
 
-O projeto **TodoList** surgiu como resposta a um desafio técnico proposto pelo Grupo Visagio, cujo objetivo é avaliar a capacidade de um desenvolvedor em construir uma aplicação funcional que permita organizar tarefas de forma eficiente. O desafio central propõe a criação de um sistema onde o usuário possa cadastrar múltiplas listas e, dentro de cada lista, adicionar várias tarefas.
+O projeto **TodoList** é proposto como parte de um desafio técnico que solicita a construção de uma aplicação web para gerenciamento de tarefas. O sistema deve permitir que o usuário crie listas de tarefas e, dentro de cada lista, adicione, edite, exclua e marque tarefas como concluídas.
 
-Esse cenário reflete uma necessidade comum no cotidiano de estudantes, profissionais e equipes organizacionais que buscam aumentar sua produtividade através do planejamento e acompanhamento de atividades. A proposta também incentiva a criatividade e autonomia do candidato, permitindo a implementação de funcionalidades adicionais que agreguem valor à experiência do usuário.
-
-A aplicação foi desenvolvida com foco na stack **Ruby on Rails**, conforme exigido pela empresa, e contempla tanto o front-end quanto o back-end, com persistência de dados e autenticação. Além dos requisitos obrigatórios, o projeto adota boas práticas de engenharia de software e organização de backlog.
+A aplicação será implementada utilizando a stack **Ruby on Rails**, com foco em funcionalidades essenciais como autenticação de usuário, CRUD completo para listas e tarefas, e persistência de dados. Além dos requisitos funcionais, o projeto adota boas práticas de engenharia de software e organização de backlog.
 
 ---
 
 ## 1.2 Identificação da Oportunidade ou Problema
 
-O problema identificado está relacionado à ausência de uma ferramenta simples e eficaz para gerenciamento pessoal de tarefas, que seja acessível, responsiva e intuitiva. Muitos usuários enfrentam dificuldade em manter o foco e a organização de suas rotinas, o que afeta diretamente a produtividade.
+Muitos usuários enfrentam dificuldade em manter o foco e a organização de suas rotinas, o que afeta diretamente a produtividade.
 
 A oportunidade está em fornecer uma solução que permita:
 
@@ -25,7 +23,7 @@ A aplicação também permite exploração de recursos extras, como visualizaç�
 
 ## 1.3 Desafios do Projeto
 
-Os principais desafios enfrentados no desenvolvimento do TodoList foram:
+Os principais desafios envolvidos no desenvolvimento do TodoList são:
 
 - Implementar uma estrutura robusta com autenticação segura de usuários e armazenamento de senha com hash;
 - Modelar corretamente o relacionamento entre listas e tarefas (1:N);
@@ -34,11 +32,11 @@ Os principais desafios enfrentados no desenvolvimento do TodoList foram:
 - Garantir responsividade e acessibilidade do sistema em navegadores modernos;
 - Organizar o backlog utilizando técnicas como MoSCoW, DoR, DoD, INVEST e DEEP.
 
-Além disso, o projeto foi pensado para ser expandido, possibilitando a futura inclusão de filtros avançados, rankings de produtividade e gamificação leve.
+Além disso, o projeto é pensado para ser expandido, possibilitando a futura inclusão de filtros avançados, rankings de produtividade e gamificação leve.
 
 ---
 
-## 1.4 Segmentação de Clientes
+## 1.4 Segmentação de Clientes 
 
 O público-alvo do TodoList inclui:
 
