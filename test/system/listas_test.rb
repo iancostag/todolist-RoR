@@ -5,39 +5,39 @@ class ListasTest < ApplicationSystemTestCase
     @lista = listas(:one)
   end
 
-  test "visiting the index" do
+  test "visitando a index" do
     visit listas_url
     assert_selector "h1", text: "Listas"
   end
 
-  test "should create lista" do
+  test "cria uma nova lista" do
     visit listas_url
-    click_on "New lista"
+    click_on "Nova lista"
 
-    fill_in "Descricao", with: @lista.descricao
-    fill_in "Titulo", with: @lista.titulo
-    click_on "Create Lista"
+    fill_in "Título", with: @lista.titulo
+    fill_in "Descrição", with: @lista.descricao
+    click_on "Salvar lista"
 
-    assert_text "Lista was successfully created"
-    click_on "Back"
+    assert_text "Lista criada com sucesso!"
+    click_on "Voltar para as listas"
   end
 
-  test "should update Lista" do
+  test "atualiza uma lista existente" do
     visit lista_url(@lista)
-    click_on "Edit this lista", match: :first
+    click_on "Editar"
 
-    fill_in "Descricao", with: @lista.descricao
-    fill_in "Titulo", with: @lista.titulo
-    click_on "Update Lista"
+    fill_in "Título", with: "Novo título de teste"
+    fill_in "Descrição", with: "Nova descrição"
+    click_on "Salvar lista"
 
-    assert_text "Lista was successfully updated"
-    click_on "Back"
+    assert_text "Lista atualizada com sucesso!"
+    click_on "Voltar para as listas"
   end
 
-  test "should destroy Lista" do
+  test "exclui uma lista" do
     visit lista_url(@lista)
-    click_on "Destroy this lista", match: :first
+    click_on "Excluir", match: :first
 
-    assert_text "Lista was successfully destroyed"
+    assert_text "Lista excluída com sucesso!"
   end
 end

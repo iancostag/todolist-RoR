@@ -60,7 +60,7 @@ class ListasController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_lista
-      @lista = Lista.find(params(:id))
+      @lista = Lista.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.
