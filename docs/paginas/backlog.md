@@ -16,6 +16,9 @@
 <p>
   Essa estrutura organiza e facilita a gestão do backlog, garantindo clareza no desenvolvimento e alinhamento com os objetivos do projeto. Além disso, foi utilizada a técnica <strong>MoSCoW para priorização</strong>, levando em consideração quais funcionalidades são essencias para o desafio.
 </p>
+<strong>Github Projects</strong>
+
+![Github Projects](../assets/projects.png)
 [Acesse o Projects Clicando aqui](https://github.com/users/iancostag/projects/1)
 <hr>
 
