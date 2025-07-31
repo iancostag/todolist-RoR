@@ -8,4 +8,5 @@ theme:
   name: material
 
 nav:
-  - Home: ./docs/index.md
+  - Backlog: index.md
+  - Modelagem do Banco de Dados: paginas/modelagem.md

@@ -14,7 +14,7 @@
 </ul>
 
 <p>
-  Essa estrutura organiza e facilita a gestão do backlog, garantindo clareza no desenvolvimento e alinhamento com os objetivos do projeto.
+  Essa estrutura organiza e facilita a gestão do backlog, garantindo clareza no desenvolvimento e alinhamento com os objetivos do projeto. Além disso, foi utilizada a técnica <strong>MoSCoW para priorização</strong>, levando em consideração quais funcionalidades são essencias para o desafio.
 </p>
 [Acesse o Projects Clicando aqui](https://github.com/users/iancostag/projects/1)
 <hr>
@@ -59,7 +59,7 @@
 
 <br>
 
-<h4><strong>Tema 2:</strong> Gerenciamento de Tarefas</h4>
+<h4><strong>Tema 2:</strong> Gerenciamento de Tarefas e Listas</h4>
 <h5><strong>Épico 2.1:</strong> CRUD de Tarefas</h5>
 
 <table border="1">
@@ -127,8 +127,7 @@
 
 <br>
 
-<h4><strong>Tema 3:</strong> Organização por Listas</h4>
-<h5><strong>Épico 3.1:</strong> CRUD de ToDoLists</h5>
+<h5><strong>Épico 2.2:</strong> CRUD de Listas</h5>
 
 <table border="1">
   <thead style="background-color: var(--md-primary-fg-color); color: white;">
@@ -141,7 +140,7 @@
   </thead>
   <tbody>
     <tr>
-      <td>US 3.1.1</td>
+      <td>US 2.2.1</td>
       <td>MUST</td>
       <td>Como usuário, quero cadastrar várias todolists, para melhor organizar minhas tarefas.</td>
       <td>
@@ -151,7 +150,7 @@
       </td>
     </tr>
     <tr>
-      <td>US 3.1.2</td>
+      <td>US 2.2.2</td>
       <td>MUST</td>
       <td>Como usuário, quero excluir uma todolist, pois ela e suas tarefas não me interessam mais.</td>
       <td>
@@ -161,7 +160,7 @@
       </td>
     </tr>
     <tr>
-      <td>US 3.1.3</td>
+      <td>US 2.2.3</td>
       <td>MUST</td>
       <td>Como usuário, quero editar uma todolist, para corrigir algum dado.</td>
       <td>
@@ -171,7 +170,7 @@
       </td>
     </tr>
     <tr>
-      <td>US 3.1.4</td>
+      <td>US 2.2.4</td>
       <td>MUST</td>
       <td>Como usuário, quero visualizar todas as minhas todolists, para me organizar melhor.</td>
       <td>
