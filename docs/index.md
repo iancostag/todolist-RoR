@@ -6,7 +6,7 @@ A aplicação será implementada utilizando a stack **Ruby on Rails**, com foco 
 
 ---
 
-## 1.2 Identificação da Oportunidade ou Problema
+## 1.2 Paralelo entre Software e o Problema
 
 Muitos usuários enfrentam dificuldade em manter o foco e a organização de suas rotinas, o que afeta diretamente a produtividade.
 
@@ -36,7 +36,7 @@ Além disso, o projeto é pensado para ser expandido, possibilitando a futura in
 
 ---
 
-## 1.4 Segmentação de Clientes 
+## 1.4 Segmentação de Clientes que Utilizariam o Projeto
 
 O público-alvo do TodoList inclui:
 
