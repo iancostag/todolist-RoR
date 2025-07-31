@@ -1,10 +1,28 @@
-<p style="color: green"><%= notice %></p>
+<% content_for :title, "Detalhes da Lista" %>
 
-<%= render @lista %>
+<p class="text-success"><%= notice %></p>
 
-<div>
-  <%= link_to "Edit this lista", edit_lista_path(@lista) %> |
-  <%= link_to "Back to listas", listas_path %>
+<div class="container mt-4">
+  <div class="card shadow-sm">
+    <div class="card-body">
+      <h2 class="card-title mb-3"><%= @lista.titulo %></h2>
 
-  <%= button_to "Destroy this lista", @lista, method: :delete %>
+      <p class="card-text">
+        <strong>Descrição:</strong><br>
+        <%= @lista.descricao.presence || "Sem descrição fornecida." %>
+      </p>
+
+      <p class="card-text text-muted">
+        Criada em <%= l(@lista.created_at.to_date, format: :long) %>
+      </p>
+
+      <div class="d-flex justify-content-start gap-2 mt-4">
+        <%= link_to "Editar Lista", edit_lista_path(@lista), class: "btn btn-outline-primary" %>
+        <%= button_to "Excluir Lista", lista_path(@lista), method: :delete,
+              data: { confirm: "Tem certeza que deseja excluir esta lista?" },
+              class: "btn btn-outline-danger" %>
+        <%= link_to "Voltar", listas_path, class: "btn btn-secondary" %>
+      </div>
+    </div>
+  </div>
 </div>
