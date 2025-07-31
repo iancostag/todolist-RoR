@@ -1,183 +1,50 @@
-<h2><strong>Todolist Product Backlog – (User Stories)</strong></h2>
+## 1.1 Introdução ao Desafio, negócio e Contexto
 
-<hr>
+O projeto **TodoList** surgiu como resposta a um desafio técnico proposto pelo Grupo Visagio, cujo objetivo é avaliar a capacidade de um desenvolvedor em construir uma aplicação funcional que permita organizar tarefas de forma eficiente. O desafio central propõe a criação de um sistema onde o usuário possa cadastrar múltiplas listas e, dentro de cada lista, adicionar várias tarefas.
 
-<h3><strong>Backlog Geral</strong></h3>
+Esse cenário reflete uma necessidade comum no cotidiano de estudantes, profissionais e equipes organizacionais que buscam aumentar sua produtividade através do planejamento e acompanhamento de atividades. A proposta também incentiva a criatividade e autonomia do candidato, permitindo a implementação de funcionalidades adicionais que agreguem valor à experiência do usuário.
 
-<p>
-  Meu backlog está oganizado no <em>Github Projects</em>, onde especifico <strong>critérios de aceitação</strong>,além de utilizar tags para:
-</p>
-<ul>
-  <li>Identificar a priorização das User Stories (US).</li>
-  <li>Identificar a qual funcionalidade ou agrupamento cada US pertence.</li>
-  <li>Classificar o nível de granularidade: Tema, Épico ou User Story.</li>
-</ul>
+A aplicação foi desenvolvida com foco na stack **Ruby on Rails**, conforme exigido pela empresa, e contempla tanto o front-end quanto o back-end, com persistência de dados e autenticação. Além dos requisitos obrigatórios, o projeto adota boas práticas de engenharia de software e organização de backlog.
 
-<p>
-  Essa estrutura organiza e facilita a gestão do backlog, garantindo clareza no desenvolvimento e alinhamento com os objetivos do projeto. Além disso, foi utilizada a técnica <strong>MoSCoW para priorização</strong>, levando em consideração quais funcionalidades são essencias para o desafio.
-</p>
-[Acesse o Projects Clicando aqui](https://github.com/users/iancostag/projects/1)
-<hr>
+---
 
-<h4><strong> Objetivo Específico: Gerenciar tarefas pessoais de forma simples e organizada</strong></h4>
+## 1.2 Identificação da Oportunidade ou Problema
 
-<h4><strong>Tema 1:</strong> Autenticação e Conta de Usuário</h4>
-<h5><strong>Épico 1.1:</strong> Login e Recuperação de Acesso</h5>
+O problema identificado está relacionado à ausência de uma ferramenta simples e eficaz para gerenciamento pessoal de tarefas, que seja acessível, responsiva e intuitiva. Muitos usuários enfrentam dificuldade em manter o foco e a organização de suas rotinas, o que afeta diretamente a produtividade.
 
-<table border="1">
-  <thead style="background-color: var(--md-primary-fg-color); color: white;">
-    <tr>
-      <th><strong>Código</strong></th>
-      <th><strong>Prioridade</strong></th>
-      <th><strong>User Story</strong></th>
-      <th><strong>Critérios de Aceitação</strong></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>US 1.1.1</td>
-      <td>MUST</td>
-      <td>Como usuário, quero logar na aplicação para ter controle das minhas todolists.</td>
-      <td>
-        - Tela de login com campos obrigatórios.<br>
-        - Após autenticação, redirecionar para dashboard do usuário.<br>
-        - Mensagem clara de erro em caso de falha.
-      </td>
-    </tr>
-    <tr>
-      <td>US 1.1.2</td>
-      <td>SHOULD</td>
-      <td>Como usuário, quero trocar minha senha pois esqueci.</td>
-      <td>
-        - Link “Esqueci minha senha” disponível na tela de login.<br>
-        - Sistema envia e-mail de recuperação com link.<br>
-        - Nova senha deve ser validada e persistida.
-      </td>
-    </tr>
-  </tbody>
-</table>
+A oportunidade está em fornecer uma solução que permita:
 
-<br>
+- Organizar tarefas em listas distintas (por área, projeto, objetivo);
+- Acompanhar prazos e status das tarefas;
+- Manter o histórico de atividades realizadas;
+- Facilitar o acesso por autenticação individualizada.
 
-<h4><strong>Tema 2:</strong> Gerenciamento de Tarefas e Listas</h4>
-<h5><strong>Épico 2.1:</strong> CRUD de Tarefas</h5>
+A aplicação também permite exploração de recursos extras, como visualização de tarefas do dia, marcação de tarefas como concluídas e categorizadas por listas.
 
-<table border="1">
-  <thead style="background-color: var(--md-primary-fg-color); color: white;">
-    <tr>
-      <th><strong>Código</strong></th>
-      <th><strong>Prioridade</strong></th>
-      <th><strong>User Story</strong></th>
-      <th><strong>Critérios de Aceitação</strong></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>US 2.1.1</td>
-      <td>MUST</td>
-      <td>Como usuário, quero cadastrar uma tarefa para me organizar.</td>
-      <td>
-        - Formulário com título, descrição e data.<br>
-        - Tarefa deve ser salva corretamente no banco.<br>
-        - Mensagem de sucesso exibida após criação.
-      </td>
-    </tr>
-    <tr>
-      <td>US 2.1.2</td>
-      <td>MUST</td>
-      <td>Como usuário, quero deletar uma tarefa pois ela não faz mais sentido para mim.</td>
-      <td>
-        - Opção de “Excluir” visível.<br>
-        - Confirmação antes da exclusão.<br>
-        - Tarefa removida do sistema.
-      </td>
-    </tr>
-    <tr>
-      <td>US 2.1.3</td>
-      <td>MUST</td>
-      <td>Como usuário, quero editar uma tarefa, pois quero reagendá-la ou trocar seu nome.</td>
-      <td>
-        - Permitir edição de nome, descrição e data.<br>
-        - Alterações devem ser persistidas.<br>
-        - Mensagem de sucesso ao salvar.
-      </td>
-    </tr>
-    <tr>
-      <td>US 2.1.4</td>
-      <td>MUST</td>
-      <td>Como usuário, quero marcar uma tarefa como concluída, para saber o que já concluí.</td>
-      <td>
-        - Checkbox ou botão para marcar como “Concluída”.<br>
-        - Estado da tarefa deve mudar visualmente.<br>
-        - Persistência no banco de dados.
-      </td>
-    </tr>
-    <tr>
-      <td>US 2.1.5</td>
-      <td>MUST</td>
-      <td>Como usuário, quero visualizar as tarefas de hoje, para realizá-las.</td>
-      <td>
-        - Página ou filtro “Hoje”.<br>
-        - Exibe apenas tarefas da data atual.<br>
-        - Ordenadas por horário ou prioridade.
-      </td>
-    </tr>
-  </tbody>
-</table>
+---
 
-<br>
+## 1.3 Desafios do Projeto
 
-<h5><strong>Épico 2.2:</strong> CRUD de Listas</h5>
+Os principais desafios enfrentados no desenvolvimento do TodoList foram:
 
-<table border="1">
-  <thead style="background-color: var(--md-primary-fg-color); color: white;">
-    <tr>
-      <th><strong>Código</strong></th>
-      <th><strong>Prioridade</strong></th>
-      <th><strong>User Story</strong></th>
-      <th><strong>Critérios de Aceitação</strong></th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>US 2.2.1</td>
-      <td>MUST</td>
-      <td>Como usuário, quero cadastrar várias todolists, para melhor organizar minhas tarefas.</td>
-      <td>
-        - Campo para nome da lista.<br>
-        - Cada lista pode conter várias tarefas.<br>
-        - Salvar lista no banco.
-      </td>
-    </tr>
-    <tr>
-      <td>US 2.2.2</td>
-      <td>MUST</td>
-      <td>Como usuário, quero excluir uma todolist, pois ela e suas tarefas não me interessam mais.</td>
-      <td>
-        - Botão de exclusão visível.<br>
-        - Confirmação obrigatória.<br>
-        - Todas as tarefas associadas também devem ser removidas.
-      </td>
-    </tr>
-    <tr>
-      <td>US 2.2.3</td>
-      <td>MUST</td>
-      <td>Como usuário, quero editar uma todolist, para corrigir algum dado.</td>
-      <td>
-        - Permitir alteração do nome.<br>
-        - Persistir mudanças.<br>
-        - Exibir feedback visual.
-      </td>
-    </tr>
-    <tr>
-      <td>US 2.2.4</td>
-      <td>MUST</td>
-      <td>Como usuário, quero visualizar todas as minhas todolists, para me organizar melhor.</td>
-      <td>
-        - Exibir listagem completa das listas criadas.<br>
-        - Cada item pode ser clicado para exibir suas tarefas.<br>
-        - Mensagem de "nenhuma lista encontrada" se estiver vazio.
-      </td>
-    </tr>
-  </tbody>
-</table>
+- Implementar uma estrutura robusta com autenticação segura de usuários e armazenamento de senha com hash;
+- Modelar corretamente o relacionamento entre listas e tarefas (1:N);
+- Criar uma interface clara e intuitiva, sem distrações, com foco na produtividade;
+- Permitir CRUD completo para listas e tarefas, com feedbacks visuais adequados;
+- Garantir responsividade e acessibilidade do sistema em navegadores modernos;
+- Organizar o backlog utilizando técnicas como MoSCoW, DoR, DoD, INVEST e DEEP.
+
+Além disso, o projeto foi pensado para ser expandido, possibilitando a futura inclusão de filtros avançados, rankings de produtividade e gamificação leve.
+
+---
+
+## 1.4 Segmentação de Clientes
+
+O público-alvo do TodoList inclui:
+
+- Estudantes universitários e de concursos que precisam manter o controle de estudos e prazos;
+- Jovens profissionais que lidam com múltiplas tarefas e projetos simultâneos;
+- Autodidatas e freelancers que trabalham com organização pessoal intensa;
+- Qualquer usuário que deseje uma solução simples, funcional e responsiva para organizar seu dia a dia.
+
+O perfil desses usuários geralmente envolve familiaridade com sistemas digitais, alta autonomia e foco em praticidade e objetividade. Eles valorizam ferramentas que não sejam sobrecarregadas de recursos, mas que executem bem o que se propõem a fazer.

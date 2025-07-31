@@ -1,0 +1,17 @@
+# Técnicas de Engenharia de Requisitos Aplicadas
+<p style="text-align: justify;"> Durante o desenvolvimento do projeto <strong>TodoList</strong>, foram aplicadas diversas técnicas e boas práticas da Engenharia de Requisitos para garantir clareza, rastreabilidade e organização do backlog. As técnicas a seguir foram selecionadas para atender ao desafio técnico e orientar a construção incremental da aplicação. </p>
+
+## 1.Elicitação de Requisitos - Análise do Teste Técnico 
+<p style="text-align: justify;"> A elicitação dos requisitos foi baseada diretamente na análise detalhada do enunciado do desafio técnico. A partir dessa análise, foi possível identificar funcionalidades obrigatórias, comportamentos esperados do sistema e restrições implícitas, que nortearam a criação do backlog inicial. </p>
+
+## 2.MoSCoW – Priorização das Funcionalidades
+<p style="text-align: justify;"> A técnica <strong>MoSCoW</strong> foi utilizada para categorizar as User Stories com base em sua criticidade e impacto na entrega do MVP(Requisitos Obrigatórios do teste). As tags aplicadas foram: </p> <ul> <li><strong>MUST</strong> – Funcionalidades essenciais para o funcionamento mínimo do sistema.</li> <li><strong>SHOULD</strong> – Funcionalidades importantes, mas não obrigatórias para a primeira entrega.</li> <li><strong>COULD</strong> – Funcionalidades desejáveis, que podem ser entregues em versões futuras.</li> <li><strong>WON’T</strong> – Funcionalidades fora do escopo atual.</li> </ul>
+
+## 3.DEEP – Organização do Backlog
+<p style="text-align: justify;"> A técnica <strong>DEEP</strong> foi aplicada para garantir que o backlog se mantenha saudável ao longo do tempo. Isso significa que os itens de backlog seguem os seguintes princípios: </p> <ul> <li><strong>D</strong> – <em>Detailed appropriately</em>: User Stories possuem nível de detalhamento adequado.</li> <li><strong>E</strong> – <em>Estimated</em>: As tarefas possuem estimativas ou tags de prioridade (ex: MUST).</li> <li><strong>E</strong> – <em>Emergent</em>: O backlog é evolutivo, sendo ajustado conforme o progresso.</li> <li><strong>P</strong> – <em>Prioritized</em>: Os itens mais importantes vêm primeiro.</li> </ul>
+
+## 4.DoR – Definition of Ready
+<p style="text-align: justify;"> Para garantir que uma User Story estivesse pronta para desenvolvimento, foi aplicada a <strong>Definition of Ready (DoR)</strong>, baseada em critérios objetivos: </p> <ul> <li>A US atende aos critérios do modelo <strong>INVEST</strong> (Independente, Negociável, Valiosa, Estimável, Pequena e Testável).</li> <li>A US possui <strong>critérios de aceitação bem definidos</strong>.</li> <li>A US foi discutida e compreendida por todos os envolvidos(no caso eu).</li> </ul>
+
+## 5.DoD – Definition of Done
+<p style="text-align: justify;"> A <strong>Definition of Done (DoD)</strong> foi utilizada para validar se uma User Story foi realmente concluída. Antes de marcar uma US como “Feita”, os seguintes pontos foram avaliados: </p> <ul> <li>Todos os <strong>critérios de aceitação</strong> foram cumpridos.</li> <li>As <strong>regras de negócio</strong> foram respeitadas.</li> <li>Todos os <strong>testes automatizados e manuais</strong> passaram com sucesso.</li> <li>A funcionalidade foi integrada e testada no sistema.</li> </ul> 

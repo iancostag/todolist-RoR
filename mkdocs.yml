@@ -8,6 +8,8 @@ theme:
   name: material
 
 nav:
-  - Backlog: index.md
+  - Descrição do Desafio e Introdução ao Negócio: index.md
   - Requisitos: paginas/requisitos.md
+  - Técnicas de Engenharia de Requisitos Aplicadas: paginas/er.md
+  - Backlog: paginas/backlog.md
   - Modelagem do Banco de Dados: paginas/modelagem.md
