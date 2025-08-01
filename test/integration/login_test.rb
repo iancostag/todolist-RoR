@@ -2,6 +2,9 @@ require "test_helper"
 
 class LoginTest < ActionDispatch::IntegrationTest
   def setup
+    Tarefa.delete_all
+    Lista.delete_all
+    Usuario.delete_all
     @usuario = Usuario.create!(
       email: "teste@email.com",
       password: "123456",

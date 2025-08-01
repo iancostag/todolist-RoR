@@ -25,6 +25,9 @@ body {
 .bg-surface {
   background-color: var(--surface) !important;
 }
+.bg-danger{
+  background-color: var(--danger) !important;
+}
 
 .container-login {
   display: flex;
@@ -43,13 +46,13 @@ body {
 }
 
 .btn-primary {
-  background-color: var(--secondary);
-  border-color: var(--primary);
+  background-color: var(--danger);
+  border-color: var(--danger);
 }
 
 .btn-primary:hover {
-  background-color: #16346F;
-  border-color: #16346F;
+  background-color: var(--primary);
+  border-color: var(--primary);
 }
 
 .btn-success {
@@ -106,7 +109,7 @@ body {
 
 .form-label {
   font-weight: 500;
-  color: var(--primary);
+  color: var(--danger);
 }
 
 .form-control,

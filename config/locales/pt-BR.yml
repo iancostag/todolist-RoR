@@ -23,6 +23,7 @@ pt-BR:
               blank: "não pode ficar em branco"
       messages:
         required: "é obrigatório"
+        record_invalid: "A validação falhou: %{errors}"
   errors:
     format: "%{attribute} %{message}"
     messages:
