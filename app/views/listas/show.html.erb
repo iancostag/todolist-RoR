@@ -12,7 +12,7 @@
         <%= @lista.descricao.presence || "Sem descrição fornecida." %>
       </p>
 
-      <p class="card-text text-muted">
+      <p class="card-text text-white-50">
         Criada em <%= l(@lista.created_at.to_date, format: :long) %>
       </p>
 
@@ -42,28 +42,28 @@
                                           ["Pendente", "bg-warning text-dark"]
                                         end %>
 
-        <li class="list-group-item">
+        <li class="list-group-item bg-surface text-white border-0 mb-2 rounded shadow-sm">
           <div class="d-flex justify-content-between align-items-start">
             <div>
               <strong><%= tarefa.titulo %></strong><br>
-              <small class="text-muted"><%= tarefa.descricao %></small><br>
+              <small class="text-white-50"><%= tarefa.descricao %></small><br>
               <% if tarefa.prazo %>
                 <small>Prazo: <%= l(tarefa.prazo, format: :long) %></small><br>
               <% end %>
               <span class="badge <%= status_class %> mt-2"><%= status_label %></span>
             </div>
-            <div class="btn-group">
+            <div class="d-flex gap-2">
               <%= link_to "Editar", edit_tarefa_path(tarefa), class: "btn btn-sm btn-outline-primary" %>
               <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modal-excluir-<%= @lista.id %>">
-                  Excluir
-                </button>
+                Excluir
+              </button>
             </div>
           </div>
         </li>
       <% end %>
     </ul>
   <% else %>
-    <p class="text-muted">Nenhuma tarefa cadastrada nesta lista.</p>
+    <p class="text-white-50">Nenhuma tarefa cadastrada nesta lista.</p>
   <% end %>
 </div>
 
