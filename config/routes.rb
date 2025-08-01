@@ -1,9 +1,10 @@
 Rails.application.routes.draw do
-  root to: "sessoes#new"
+  root to: "tarefas#hoje"
   get "usuarios/new"
   get "usuarios/create"
   # cruds
   resources :tarefas
+  get "/tarefas/hoje", to: "tarefas#hoje", as: :tarefas_hoje
   resources :listas
   get "up" => "rails/health#show", as: :rails_health_check
   # cadastro de usuarios

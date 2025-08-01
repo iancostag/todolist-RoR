@@ -28,44 +28,45 @@
   </div>
 </div>
 <div class="container mt-4">
-  <h3>Tarefas da Lista</h3>
 
-  <% if @lista.tarefas.any? %>
-    <ul class="list-group">
-      <% @lista.tarefas.each do |tarefa| %>
-        <% atrasada = !tarefa.concluida? && tarefa.prazo.present? && tarefa.prazo < Date.today %>
-        <% status_label, status_class = if tarefa.concluida?
-                                          ["Concluída", "bg-success"]
-                                        elsif atrasada
-                                          ["Atrasada", "bg-danger"]
-                                        else
-                                          ["Pendente", "bg-warning text-dark"]
-                                        end %>
+  <h3 class="mt-4">Tarefas da Lista</h3>
 
-        <li class="list-group-item bg-surface text-white border-0 mb-2 rounded shadow-sm">
-          <div class="d-flex justify-content-between align-items-start">
-            <div>
-              <strong><%= tarefa.titulo %></strong><br>
-              <small class="text-white-50"><%= tarefa.descricao %></small><br>
-              <% if tarefa.prazo %>
-                <small>Prazo: <%= l(tarefa.prazo, format: :long) %></small><br>
-              <% end %>
-              <span class="badge <%= status_class %> mt-2"><%= status_label %></span>
-            </div>
-            <div class="d-flex gap-2">
-              <%= link_to "Editar", edit_tarefa_path(tarefa), class: "btn btn-sm btn-outline-primary" %>
-              <button type="button" class="btn btn-outline-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modal-excluir-<%= @lista.id %>">
-                Excluir
-              </button>
-            </div>
+  <div class="mt-3">
+    <% if @lista.tarefas.any? %>
+      <% @lista.tarefas.order(:concluida, :prazo, :created_at).each do |tarefa| %>
+        <div class="d-flex align-items-center mb-2">
+          <%= form_with model: tarefa, url: tarefa_path(tarefa), method: :patch, local: true do |form| %>
+            <%= form.check_box :concluida, class: "form-check-input", onchange: "this.form.submit()" %>
+          <% end %>
+          <span class="ms-2 <%= 'text-decoration-line-through text-blue fst-italic' if tarefa.concluida %>">
+            <strong><%= tarefa.titulo %></strong>
+            <% if tarefa.descricao.present? %>
+              <small class="text-white-50 ms-1"><%= tarefa.descricao %></small>
+            <% end %>
+            <% if tarefa.prazo %>
+              <small class="ms-2 text-white-50">(Prazo: <%= l(tarefa.prazo, format: "%b %-d") %>)</small>
+            <% end %>
+          </span>
+          <span class="ms-2">
+            <% if tarefa.concluida? %>
+              <span class="badge bg-success">Concluída</span>
+            <% elsif tarefa.prazo && tarefa.prazo < Date.today %>
+              <span class="badge bg-danger">Atrasada</span>
+            <% else %>
+              <span class="badge bg-warning text-dark">Pendente</span>
+            <% end %>
+          </span>
+          <div class="ms-auto d-flex gap-2">
+            <%= link_to "Editar", edit_tarefa_path(tarefa), class: "btn btn-sm btn-outline-primary" %>
+            <%= button_to "Excluir", tarefa_path(tarefa), method: :delete, data: { confirm: "Tem certeza?" }, class: "btn btn-sm btn-outline-danger" %>
           </div>
-        </li>
+        </div>
       <% end %>
-    </ul>
-  <% else %>
-    <p class="text-white-50">Nenhuma tarefa cadastrada nesta lista.</p>
-  <% end %>
-</div>
+    <% else %>
+      <p class="text-white-50">Nenhuma tarefa cadastrada nesta lista.</p>
+    <% end %>
+  </div>
+
 
 
 <div class="modal fade" id="modal-excluir-<%= @lista.id %>" tabindex="-1" aria-labelledby="modalLabel-<%= @lista.id %>" aria-hidden="true">

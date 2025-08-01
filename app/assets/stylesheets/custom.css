@@ -1,10 +1,10 @@
 :root {
   --primary: #1F3A93;       
   --secondary: #ECEFF1;
-  --success: #2ECC71;
-  --danger: #E74C3C;
+  --success: #10c986;
+  --danger: #ff3860;
   --background: #1e1e1e;     
-  --surface: #2c2c2c;         
+  --surface: #23272f;         
   --text: #ffffff;            
   --text-muted: #bbbbbb;      
 }
@@ -80,6 +80,17 @@ body {
   text-decoration: underline;
 }
 
+.btn-danger, .btn-danger:active, .btn-danger:focus {
+  background-color: var(--danger) !important;
+  border-color: var(--danger) !important;
+  color: #fff !important;
+}
+
+.btn-danger:hover, .btn-danger:active:hover {
+  background-color: #c0392b !important;
+  border-color: #c0392b !important;
+}
+
 .form-check-input {
   border-radius: 100%; /* deixa o checkbox arredondado (bolinha) */
   width: 1rem;
@@ -133,4 +144,8 @@ a {
 a:hover {
   color: #16346F;
   text-decoration: underline;
+}
+
+.text-danger{
+  color: var(--danger);
 }

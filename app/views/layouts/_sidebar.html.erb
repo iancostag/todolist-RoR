@@ -11,13 +11,13 @@
 
     <ul class="nav flex-column mb-4">
       <li class="nav-item mb-2">
-        <%= link_to "Entrada", root_path, class: "nav-link text-white" %>
+        <%= link_to "Suas Tarefas de Hoje", root_path, class: "nav-link text-white" %>
       </li>
       <li class="nav-item mb-2">
-        <%= link_to "Hoje", "#", class: "nav-link text-white" %>
+        <%= link_to "Calendário de Tarefas", tarefas_path, class: "nav-link text-white" %>
       </li>
       <li class="nav-item mb-2">
-        <%= link_to "Em breve", tarefas_path, class: "nav-link text-white" %>
+        <%= link_to "Minhas TodoLists", listas_path, class: "nav-link text-white" %>
       </li>
     </ul>
 
@@ -31,7 +31,7 @@
     </ul>
 
     <div class="mt-4">
-      <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalNovaTarefa">
+      <button class="btn btn-danger w-100" data-bs-toggle="modal" data-bs-target="#modalNovaTarefa">
         + Adicionar tarefa
       </button>
     </div>
