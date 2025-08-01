@@ -125,6 +125,16 @@
         - Ordenadas por horário ou prioridade.
       </td>
     </tr>
+    <tr>
+      <td>US 2.1.6</td>
+      <td>MUST</td>
+      <td>Como Usuário, quero visualizar as tarefas de uma lista especifica ao clicar nela.
+      </td>
+      <td>
+        - Ver as tarefas daquela lista apenas após clicar em ver detalhes.<br>
+        - Mostrar data, nome,status
+      </td>
+    </tr>
   </tbody>
 </table>
 
