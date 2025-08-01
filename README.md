@@ -12,8 +12,8 @@ Aplicação web para gerenciamento de tarefas, construída em **Ruby on Rails 8*
 ### 1. Clone o repositório
 
 ```bash
-git clone https://github.com/seu-usuario/todolist.git
-cd todolist
+git clone https://github.com/iancostag/todolist-RoR.git
+cd todolist-RoR
 ```
 
 2. Suba os containers
