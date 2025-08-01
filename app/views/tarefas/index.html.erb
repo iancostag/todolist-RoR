@@ -1,5 +1,5 @@
 <h1>Em breve</h1>
-  <div class="d-flex align-items-center mb-4 gap-2">
+  <div class="d-flex justify-content-center align-items-center mb-4 gap-2">
   <%= link_to "<", tarefas_path(data: (@data_inicial - 1).to_s), class: "btn btn-outline-light btn-sm px-2" %>
 
   <%= link_to "Hoje", tarefas_path(data: Date.today.to_s), class: "btn btn-outline-primary btn-sm mx-2" %>
@@ -27,7 +27,7 @@
 
       <% tarefas.each do |tarefa| %>
         <div class="d-flex align-items-center mb-2">
-          <%= form_with model: tarefa, url: tarefa_path(tarefa), method: :patch, local: true do |form| %>
+          <%= form_with model: tarefa,scope: :tarefa, url: tarefa_path(tarefa), method: :patch, local: true do |form| %>
             <%= form.check_box :concluida, class: "form-check-input", onchange: "this.form.submit()" %>
           <% end %>
           <span class="ms-2 <%= 'text-decoration-line-through text-blue fst-italic' if tarefa.concluida %>">

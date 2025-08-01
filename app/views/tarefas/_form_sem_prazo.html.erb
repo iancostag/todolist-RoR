@@ -2,7 +2,7 @@
   <%= form.hidden_field :prazo, value: dia, data: { "modal-tarefa-target": "prazo" } %>
   <div class="mb-3">
     <%= form.label :titulo, class: "form-label" %>
-    <%= form.text_field :titulo, class: "form-control" %>
+    <%= form.text_field :titulo, class: "form-control",require:true %>
   </div>
   <div class="mb-3">
     <%= form.label :descricao, class: "form-label" %>
@@ -10,7 +10,7 @@
   </div>
   <div class="mb-3">
     <%= form.label :lista_id, "Lista", class: "form-label" %>
-    <%= form.collection_select :lista_id, current_usuario.listas, :id, :titulo, {}, class: "form-select" %>
+    <%= form.collection_select :lista_id, current_usuario.listas, :id, :titulo, {}, class: "form-select",require:true %>
   </div>
   <div class="mt-4 d-flex justify-content-end gap-2">
     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>

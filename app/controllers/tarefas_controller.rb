@@ -1,9 +1,9 @@
 class TarefasController < ApplicationController
   before_action :set_tarefa, only: %i[ show edit update destroy ]
 
+
   # GET /tarefas or /tarefas.json
   def index
-  puts ">> data_inicial: #{params[:data].inspect}"
   data_inicial = params[:data] ? Date.parse(params[:data]) : Date.today
   datas = (data_inicial..(data_inicial + 30)).to_a
 
@@ -72,7 +72,7 @@ class TarefasController < ApplicationController
     @tarefa.destroy!
 
     respond_to do |format|
-      format.html { redirect_to tarefas_path, status: :see_other, notice: "Tarefa was successfully destroyed." }
+      format.html { redirect_to tarefas_path, status: :see_other, notice: "A tarefa foi excluida com sucesso!" }
       format.json { head :no_content }
     end
   end

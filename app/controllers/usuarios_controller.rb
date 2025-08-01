@@ -1,5 +1,7 @@
 class UsuariosController < ApplicationController
+  skip_before_action :requer_login, only: [ :new, :create ]
   def new
+      flash.clear
       @usuario = Usuario.new
   end
 

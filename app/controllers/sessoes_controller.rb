@@ -1,7 +1,9 @@
 class SessoesController < ApplicationController
+  skip_before_action :requer_login, only: [ :new, :create ]
   layout "auth", only: [ :new ]
 
   before_action :redirecionar_se_autenticado, only: [ :new ]
+
   def new
   end
 
