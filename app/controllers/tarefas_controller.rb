@@ -2,20 +2,23 @@ class TarefasController < ApplicationController
   before_action :set_tarefa, only: %i[ show edit update destroy ]
 
 
-  # GET /tarefas or /tarefas.json
-  def index
+# GET /tarefas or /tarefas.json
+def index
   data_inicial = params[:data] ? Date.parse(params[:data]) : Date.today
   datas = (data_inicial..(data_inicial + 30)).to_a
 
   tarefas = current_usuario.listas.joins(:tarefas)
               .where("tarefas.prazo >= ?", data_inicial)
-              .select("tarefas.*")
-              .order("tarefas.prazo ASC")
+
+
+  tarefas = tarefas.select("tarefas.*").order("tarefas.prazo ASC")
 
   tarefas_agrupadas = tarefas.group_by(&:prazo)
   @tarefas_por_dia = datas.map { |data| [ data, tarefas_agrupadas[data] || [] ] }.to_h
   @data_inicial = data_inicial
-  end
+end
+
+
 
   def hoje
   # Busca todas as tarefas do usuário com prazo HOJE
