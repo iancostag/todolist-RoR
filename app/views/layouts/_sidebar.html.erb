@@ -17,7 +17,7 @@
         <%= link_to "Hoje", "#", class: "nav-link text-white" %>
       </li>
       <li class="nav-item mb-2">
-        <%= link_to "Em breve", "#", class: "nav-link text-white" %>
+        <%= link_to "Em breve", tarefas_path, class: "nav-link text-white" %>
       </li>
     </ul>
 
@@ -60,10 +60,6 @@
                 <div class="col-md-4">
                   <%= form.label :prazo, class: "form-label" %>
                   <%= form.date_field :prazo, class: "form-control" %>
-                </div>
-                <div class="col-md-4">
-                  <%= form.label :concluida, "Status", class: "form-label" %>
-                  <%= form.select :concluida, [["Pendente", false], ["Concluída", true]], {}, class: "form-select" %>
                 </div>
                 <div class="col-md-4">
                   <%= form.label :lista_id, "Lista", class: "form-label" %>

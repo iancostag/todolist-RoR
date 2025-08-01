@@ -1,16 +1,63 @@
-<p style="color: green"><%= notice %></p>
+<h1>Em breve</h1>
+  <div class="d-flex align-items-center mb-4 gap-2">
+  <%= link_to "<", tarefas_path(data: (@data_inicial - 1).to_s), class: "btn btn-outline-light btn-sm px-2" %>
 
-<% content_for :title, "Tarefas" %>
+  <%= link_to "Hoje", tarefas_path(data: Date.today.to_s), class: "btn btn-outline-primary btn-sm mx-2" %>
 
-<h1>Tarefas</h1>
+  <%= link_to ">", tarefas_path(data: (@data_inicial + 1).to_s), class: "btn btn-outline-light btn-sm px-2" %>
 
-<div id="tarefas">
-  <% @tarefas.each do |tarefa| %>
-    <%= render tarefa %>
-    <p>
-      <%= link_to "Show this tarefa", tarefa %>
-    </p>
+  <%= form_with url: tarefas_path, method: :get, local: true, class: "ms-3 d-inline-flex align-items-center gap-2" do |form| %>
+    <%= form.date_field :data, value: @data_inicial, class: "form-control form-control-sm" %>
+    <%= form.submit "Ir", class: "btn btn-outline-success btn-sm" %>
+  <% end %>
+  </div>
+
+<div class="container">
+
+  <% @tarefas_por_dia.each do |dia, tarefas| %>
+    <div class="mb-4">
+      <div class="text-secondary mb-2">
+        <strong><%= l(dia, format: "%b %-d • %A") %></strong>
+        <% if dia == Date.today %>
+          <span class="text-muted">• Hoje</span>
+        <% elsif dia == Date.tomorrow %>
+          <span class="text-muted">• Amanhã</span>
+        <% end %>
+      </div>
+
+      <% tarefas.each do |tarefa| %>
+        <div class="d-flex align-items-center mb-2">
+          <%= form_with model: tarefa, url: tarefa_path(tarefa), method: :patch, local: true do |form| %>
+            <%= form.check_box :concluida, class: "form-check-input", onchange: "this.form.submit()" %>
+          <% end %>
+          <span class="ms-2 <%= 'text-decoration-line-through text-blue fst-italic' if tarefa.concluida %>">
+            <%= tarefa.titulo %>
+          </span>
+        </div>
+      <% end %>
+
+      <div>
+        <%= link_to "+ Adicionar tarefa", "#",
+          class: "btn btn-link text-danger p-0",
+          data: { bs_toggle: "modal", bs_target: "#modalNovaTarefa-#{dia}" } %>
+      </div>
+
+      <div class="modal fade" id="modalNovaTarefa-<%= dia %>" tabindex="-1" 
+          aria-labelledby="modalNovaTarefaLabel-<%= dia %>" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+          <div class="modal-content bg-dark text-white">
+            <div class="modal-header">
+              <h5 class="modal-title" id="modalNovaTarefaLabel-<%= dia %>">Nova Tarefa</h5>
+              <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
+            </div>
+            <div class="modal-body">
+              <%= render "tarefas/form_sem_prazo", dia: dia %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <hr class="border-secondary mt-4">
+    </div>
   <% end %>
 </div>
-
-<%= link_to "New tarefa", new_tarefa_path %>

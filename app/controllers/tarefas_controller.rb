@@ -3,7 +3,18 @@ class TarefasController < ApplicationController
 
   # GET /tarefas or /tarefas.json
   def index
-    @tarefas = Tarefa.all
+  puts ">> data_inicial: #{params[:data].inspect}"
+  data_inicial = params[:data] ? Date.parse(params[:data]) : Date.today
+  datas = (data_inicial..(data_inicial + 30)).to_a
+
+  tarefas = current_usuario.listas.joins(:tarefas)
+              .where("tarefas.prazo >= ?", data_inicial)
+              .select("tarefas.*")
+              .order("tarefas.prazo ASC")
+
+  tarefas_agrupadas = tarefas.group_by(&:prazo)
+  @tarefas_por_dia = datas.map { |data| [ data, tarefas_agrupadas[data] || [] ] }.to_h
+  @data_inicial = data_inicial
   end
 
   # GET /tarefas/1 or /tarefas/1.json
@@ -25,7 +36,7 @@ class TarefasController < ApplicationController
 
     respond_to do |format|
       if @tarefa.save
-        format.html { redirect_to @tarefa, notice: "Tarefa was successfully created." }
+        format.html { redirect_to tarefas_path, notice: "Tarefa criada com sucesso!" }
         format.json { render :show, status: :created, location: @tarefa }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -36,16 +47,14 @@ class TarefasController < ApplicationController
 
   # PATCH/PUT /tarefas/1 or /tarefas/1.json
   def update
-    respond_to do |format|
-      if @tarefa.update(tarefa_params)
-        format.html { redirect_to @tarefa, notice: "Tarefa was successfully updated." }
-        format.json { render :show, status: :ok, location: @tarefa }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @tarefa.errors, status: :unprocessable_entity }
-      end
+    @tarefa = Tarefa.find(params[:id])
+    if @tarefa.update(tarefa_params)
+      redirect_to tarefas_path, notice: "Tarefa atualizada."
+    else
+      redirect_to tarefas_path, alert: "Erro ao atualizar tarefa."
     end
   end
+
 
   # DELETE /tarefas/1 or /tarefas/1.json
   def destroy
@@ -65,6 +74,6 @@ class TarefasController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def tarefa_params
-      params.expect(tarefa: [ :titulo, :descricao, :concluida, :prazo, :lista_id ])
+      params.require(:tarefa).permit(:titulo, :descricao, :concluida, :prazo, :lista_id)
     end
 end
