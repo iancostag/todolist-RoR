@@ -17,6 +17,17 @@ class TarefasController < ApplicationController
   @data_inicial = data_inicial
   end
 
+  def hoje
+  # Busca todas as tarefas do usuário com prazo HOJE
+  @dia = Date.today
+  @tarefas_hoje = current_usuario.listas
+    .joins(:tarefas)
+    .where("tarefas.prazo = ?", Date.today)
+    .select("tarefas.*")
+    .order("tarefas.concluida ASC, tarefas.created_at ASC")
+  end
+
+
   # GET /tarefas/1 or /tarefas/1.json
   def show
   end

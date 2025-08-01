@@ -25,6 +25,6 @@ class SessoesController < ApplicationController
   private
 
   def redirecionar_se_autenticado
-    redirect_to listas_path if current_usuario.present?
+    redirect_to tarefas_path if current_usuario.present?
   end
 end

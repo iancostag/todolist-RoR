@@ -1,0 +1,48 @@
+<h1>Hoje</h1>
+
+<div class="container">
+  <div class="mb-4">
+    <div class="text-secondary mb-2">
+      <strong><%= l(@dia, format: "%b %-d • %A") %></strong>
+      <span class="text-muted">• Hoje</span>
+    </div>
+
+    <% if @tarefas_hoje.any? %>
+      <% @tarefas_hoje.each do |tarefa| %>
+        <div class="d-flex align-items-center mb-2">
+          <%= form_with model: tarefa, url: tarefa_path(tarefa), method: :patch, local: true do |form| %>
+            <%= form.check_box :concluida, class: "form-check-input", onchange: "this.form.submit()" %>
+          <% end %>
+          <span class="ms-2 <%= 'text-decoration-line-through text-blue fst-italic' if tarefa.concluida %>">
+            <%= tarefa.titulo %>
+          </span>
+        </div>
+      <% end %>
+    <% else %>
+      <div class="text-muted">Nenhuma tarefa para hoje.</div>
+    <% end %>
+
+    <div>
+      <%= link_to "+ Adicionar tarefa", "#",
+        class: "btn btn-link text-danger p-0",
+        data: { bs_toggle: "modal", bs_target: "#modalNovaTarefa-hoje" } %>
+    </div>
+
+    <div class="modal fade" id="modalNovaTarefa-hoje" tabindex="-1" 
+        aria-labelledby="modalNovaTarefaLabel-hoje" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content bg-dark text-white">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalNovaTarefaLabel-hoje">Nova Tarefa</h5>
+            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
+          </div>
+          <div class="modal-body">
+            <%= render "tarefas/form_sem_prazo", dia: @dia %>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr class="border-secondary mt-4">
+  </div>
+</div>
