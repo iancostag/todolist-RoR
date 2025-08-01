@@ -19,4 +19,10 @@ class UsuariosControllerTest < ActionDispatch::IntegrationTest
     follow_redirect!
     assert_match "Conta criada com sucesso", response.body
   end
+
+  test "should not create user with invalid email" do
+  post usuarios_path, params: { usuario: { email: "", password: "123", password_confirmation: "321" } }
+  assert_response :unprocessable_entity
+  assert_match "Erro ao criar conta", response.body
+  end
 end

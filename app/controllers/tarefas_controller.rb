@@ -45,6 +45,10 @@ class TarefasController < ApplicationController
   def create
     @tarefa = Tarefa.new(tarefa_params)
 
+    unless current_usuario.listas.exists?(@tarefa.lista_id)
+      redirect_to tarefas_path, alert: "Lista inválida" and return
+    end
+
     respond_to do |format|
       if @tarefa.save
         format.html { redirect_to tarefas_path, notice: "Tarefa criada com sucesso!" }
@@ -69,19 +73,31 @@ class TarefasController < ApplicationController
 
   # DELETE /tarefas/1 or /tarefas/1.json
   def destroy
-    @tarefa.destroy!
+    if @tarefa
+      @tarefa.destroy!
 
-    respond_to do |format|
-      format.html { redirect_to tarefas_path, status: :see_other, notice: "A tarefa foi excluida com sucesso!" }
-      format.json { head :no_content }
+      respond_to do |format|
+        format.html { redirect_to tarefas_path, status: :see_other, notice: "A tarefa foi excluida com sucesso!" }
+        format.json { head :no_content }
+      end
     end
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_tarefa
-      @tarefa = Tarefa.find(params.expect(:id))
+      @tarefa = Tarefa.joins(:lista)
+                      .where(listas: { usuario_id: current_usuario.id })
+                      .find_by(id: params[:id])
+
+      unless @tarefa
+        respond_to do |format|
+          format.html { redirect_to tarefas_path, alert: "Tarefa não encontrada ou não autorizada." }
+          format.json { head :not_found }
+        end
+      end
     end
+
 
     # Only allow a list of trusted parameters through.
     def tarefa_params
