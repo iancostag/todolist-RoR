@@ -1,0 +1,84 @@
+<% if current_usuario %>
+  <aside class="bg-dark text-white p-3" style="width: 250px; min-height: 100vh;">
+    <h5 class="mb-4">Meu TodoList</h5>
+
+    <div class="mb-4">
+      <p class="mb-1 text-white-50 small">Logado como:</p>
+      <strong><%= current_usuario.email %></strong>
+
+      <%= button_to "Sair", logout_path, method: :delete, class: "btn btn-sm btn-outline-light mt-2" %>
+    </div>
+
+    <ul class="nav flex-column mb-4">
+      <li class="nav-item mb-2">
+        <%= link_to "Entrada", root_path, class: "nav-link text-white" %>
+      </li>
+      <li class="nav-item mb-2">
+        <%= link_to "Hoje", "#", class: "nav-link text-white" %>
+      </li>
+      <li class="nav-item mb-2">
+        <%= link_to "Em breve", "#", class: "nav-link text-white" %>
+      </li>
+    </ul>
+
+    <h6 class="text-muted">Minhas Listas</h6>
+    <ul class="nav flex-column">
+      <% current_usuario.listas.each do |lista| %>
+        <li class="nav-item">
+          <%= link_to "🗂 #{lista.titulo}", lista_path(lista), class: "nav-link text-white" %>
+        </li>
+      <% end %>
+    </ul>
+
+    <div class="mt-4">
+      <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#modalNovaTarefa">
+        + Adicionar tarefa
+      </button>
+    </div>
+
+    <!-- Modal de Nova Tarefa -->
+    <div class="modal fade" id="modalNovaTarefa" tabindex="-1" aria-labelledby="modalNovaTarefaLabel" aria-hidden="true">
+      <div class="modal-dialog modal-lg modal-dialog-centered">
+        <div class="modal-content bg-dark">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalNovaTarefaLabel">Nova Tarefa</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+          </div>
+          <div class="modal-body">
+            <%= form_with model: Tarefa.new, url: tarefas_path, local: true do |form| %>
+              <div class="mb-3">
+                <%= form.label :titulo, class: "form-label" %>
+                <%= form.text_field :titulo, class: "form-control" %>
+              </div>
+
+              <div class="mb-3">
+                <%= form.label :descricao, class: "form-label" %>
+                <%= form.text_area :descricao, class: "form-control" %>
+              </div>
+
+              <div class="row">
+                <div class="col-md-4">
+                  <%= form.label :prazo, class: "form-label" %>
+                  <%= form.date_field :prazo, class: "form-control" %>
+                </div>
+                <div class="col-md-4">
+                  <%= form.label :concluida, "Status", class: "form-label" %>
+                  <%= form.select :concluida, [["Pendente", false], ["Concluída", true]], {}, class: "form-select" %>
+                </div>
+                <div class="col-md-4">
+                  <%= form.label :lista_id, "Lista", class: "form-label" %>
+                  <%= form.collection_select :lista_id, current_usuario.listas, :id, :titulo, {}, class: "form-select" %>
+                </div>
+              </div>
+
+              <div class="mt-4 d-flex justify-content-end gap-2">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <%= form.submit "Adicionar tarefa", class: "btn btn-primary" %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </aside>
+<% end %>

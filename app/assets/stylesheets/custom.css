@@ -1,11 +1,14 @@
 :root {
-  --primary: #1F3A93;     
-  --secondary: #ECEFF1;   
-  --success: #2ECC71;      
-  --danger: #E74C3C;       
-  --background: #F5F7FA;   
-  --text: #2C3E50;         
+  --primary: #1F3A93;       
+  --secondary: #ECEFF1;
+  --success: #2ECC71;
+  --danger: #E74C3C;
+  --background: #1e1e1e;     
+  --surface: #2c2c2c;         
+  --text: #ffffff;            
+  --text-muted: #bbbbbb;      
 }
+
 
 body {
   background-color: var(--background);
@@ -13,9 +16,25 @@ body {
 }
 
 .card {
-  border: 1px solid #dfe6e9;
+  background-color: var(--surface); 
+  color: var(--text);           
+  border: 1px solid #333;         
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.bg-surface {
+  background-color: var(--surface) !important;
+}
+
+.container-login {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-color: var(--surface);  
+  color: var(--text);
+  padding: 75px;
+  border-radius: 10px;
 }
 
 .card-header {
@@ -45,30 +64,46 @@ body {
 }
 
 .btn-outline-secondary {
-  color: var(--primary);
-  border-color: var(--primary);
+  color: var(--text);
+  border-color: var(--text-muted);
 }
 
 .btn-outline-secondary:hover {
-  background-color: var(--primary);
-  color: white;
+  background-color: var(--text-muted);
+  color: var(--background);
 }
+
 
 .form-label {
   font-weight: 500;
   color: var(--primary);
 }
 
-.form-control {
-  border: 1px solid #ccc;
-  border-radius: 5px;
+.form-control,
+.form-select {
+  background-color: var(--surface); 
+  color: var(--text);
+  border: 1px solid #444;
 }
 
+.form-control::placeholder {
+  color: var(--text-muted);
+}
+
+.form-control:focus, 
+.form-select:focus, 
+textarea:focus {
+  background-color: #2c2c2c; /* mesma cor da sua --surface */
+  color: #fff;               /* texto claro */
+  border-color: #16346F;     /* sua cor primária nova */
+  box-shadow: 0 0 0 0.25rem rgba(22, 52, 111, 0.25); /* leve brilho azul */
+}
 .alert-danger {
-  background-color: #FDEDEC;
+  background-color: rgba(231, 76, 60, 0.1);
   border-color: var(--danger);
   color: var(--danger);
 }
+
 
 a {
   color: var(--primary);
