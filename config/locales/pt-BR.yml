@@ -13,7 +13,16 @@ pt-BR:
         prazo: "Prazo"
         concluida: "Concluída"
         lista: "Lista"
-
+    errors:
+      models:
+        tarefa:
+          attributes:
+            lista:
+              required: "precisa ser vinculada a uma lista"
+            titulo:
+              blank: "não pode ficar em branco"
+      messages:
+        required: "é obrigatório"
   errors:
     format: "%{attribute} %{message}"
     messages:
@@ -28,7 +37,6 @@ pt-BR:
       greater_than: "deve ser maior que %{count}"
       less_than: "deve ser menor que %{count}"
       invalid: "não é válido"
-
   flash:
     listas:
       create:
