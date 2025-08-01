@@ -70,4 +70,16 @@ class ListasControllerTest < ActionDispatch::IntegrationTest
     assert_response :redirect
     assert_redirected_to login_path
   end
+  test "should not create lista sem titulo" do
+  log_in_as(usuarios(:one))
+  assert_no_difference("Lista.count") do
+    post listas_url, params: { lista: { titulo: "", descricao: "Teste" } }
+  end
+  assert_response :unprocessable_entity
+  end
+  test "should not update lista de outro usuario" do
+  log_in_as(usuarios(:two))
+  patch lista_url(listas(:one)), params: { lista: { titulo: "Hacked" } }
+  assert_response :not_found
+  end
 end

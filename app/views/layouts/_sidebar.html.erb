@@ -24,9 +24,11 @@
     <h6 class="text-muted">Minhas Listas</h6>
     <ul class="nav flex-column">
       <% current_usuario.listas.each do |lista| %>
-        <li class="nav-item">
-          <%= link_to "🗂 #{lista.titulo}", lista_path(lista), class: "nav-link text-white" %>
-        </li>
+        <% if lista.persisted?%>
+          <li class="nav-item">
+            <%= link_to "🗂 #{lista.titulo}", lista_path(lista), class: "nav-link text-white" %>
+          </li>
+        <% end %>
       <% end %>
     </ul>
 
