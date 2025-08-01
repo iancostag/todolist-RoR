@@ -19,16 +19,16 @@
       <div class="d-flex justify-content-start gap-2 mt-4">
         <%= link_to "Editar Lista", edit_lista_path(@lista), class: "btn btn-outline-primary" %>
         <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modal-excluir-<%= @lista.id %>">
-  Excluir Lista
-</button>
+          Excluir Lista
+        </button>
 
         <%= link_to "Voltar", listas_path, class: "btn btn-secondary" %>
       </div>
     </div>
   </div>
 </div>
-<div class="container mt-4">
 
+<div class="container mt-4">
   <h3 class="mt-4">Tarefas da Lista</h3>
 
   <div class="mt-3">
@@ -58,7 +58,28 @@
           </span>
           <div class="ms-auto d-flex gap-2">
             <%= link_to "Editar", edit_tarefa_path(tarefa), class: "btn btn-sm btn-outline-primary" %>
-            <%= button_to "Excluir", tarefa_path(tarefa), method: :delete, data: { confirm: "Tem certeza?" }, class: "btn btn-sm btn-outline-danger" %>
+            <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modal-excluir-tarefa-<%= tarefa.id %>">
+              Excluir
+            </button>
+          </div>
+        </div>
+
+        <!-- Modal exclusão tarefa individual -->
+        <div class="modal fade" id="modal-excluir-tarefa-<%= tarefa.id %>" tabindex="-1" aria-labelledby="modalLabel-<%= tarefa.id %>" aria-hidden="true">
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalLabel-<%= tarefa.id %>">Confirmar Exclusão</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+              </div>
+              <div class="modal-body">
+                Tem certeza que deseja excluir essa tarefa <strong><%= tarefa.titulo %></strong>?
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                <%= button_to "Confirmar Exclusão", tarefa_path(tarefa), method: :delete, class: "btn btn-danger" %>
+              </div>
+            </div>
           </div>
         </div>
       <% end %>
@@ -66,23 +87,23 @@
       <p class="text-white-50">Nenhuma tarefa cadastrada nesta lista.</p>
     <% end %>
   </div>
+</div>
 
-
-
+<!-- Modal exclusão lista -->
 <div class="modal fade" id="modal-excluir-<%= @lista.id %>" tabindex="-1" aria-labelledby="modalLabel-<%= @lista.id %>" aria-hidden="true">
-        <div class="modal-dialog">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h5 class="modal-title" id="modalLabel-<%= @lista.id %>">Confirmar Exclusão</h5>
-              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
-            </div>
-            <div class="modal-body">
-              Tem certeza que deseja excluir a lista <strong><%= @lista.titulo %></strong>?
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-              <%= button_to "Confirmar Exclusão", lista_path(@lista), method: :delete, class: "btn btn-danger" %>
-            </div>
-          </div>
-        </div>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalLabel-<%= @lista.id %>">Confirmar Exclusão</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
       </div>
+      <div class="modal-body">
+        Tem certeza que deseja excluir a lista <strong><%= @lista.titulo %></strong>?
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+        <%= button_to "Confirmar Exclusão", lista_path(@lista), method: :delete, class: "btn btn-danger" %>
+      </div>
+    </div>
+  </div>
+</div>
