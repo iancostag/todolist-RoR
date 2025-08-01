@@ -3,6 +3,7 @@ require "test_helper"
 class TarefasControllerTest < ActionDispatch::IntegrationTest
   setup do
     @tarefa = tarefas(:one)
+    log_in_as(usuarios(:one))
   end
 
   test "should get index" do
@@ -20,7 +21,7 @@ class TarefasControllerTest < ActionDispatch::IntegrationTest
       post tarefas_url, params: { tarefa: { concluida: @tarefa.concluida, descricao: @tarefa.descricao, lista_id: @tarefa.lista_id, prazo: @tarefa.prazo, titulo: @tarefa.titulo } }
     end
 
-    assert_redirected_to tarefa_url(Tarefa.last)
+    assert_redirected_to tarefas_url
   end
 
   test "should show tarefa" do
@@ -35,7 +36,7 @@ class TarefasControllerTest < ActionDispatch::IntegrationTest
 
   test "should update tarefa" do
     patch tarefa_url(@tarefa), params: { tarefa: { concluida: @tarefa.concluida, descricao: @tarefa.descricao, lista_id: @tarefa.lista_id, prazo: @tarefa.prazo, titulo: @tarefa.titulo } }
-    assert_redirected_to tarefa_url(@tarefa)
+    assert_redirected_to tarefas_url
   end
 
   test "should destroy tarefa" do
