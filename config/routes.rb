@@ -1,20 +1,30 @@
 Rails.application.routes.draw do
-  root to: "tarefas#hoje"
-  get "usuarios/new"
-  get "usuarios/create"
+  devise_for :usuarios, controllers: {
+  sessions: "usuarios/sessions",
+  registrations: "usuarios/registrations",
+  passwords: "usuarios/passwords",
+  confirmations: "usuarios/confirmations",
+  unlocks: "usuarios/unlocks"
+  }
+
+  devise_scope :usuario do
+    root to: "tarefas#index"
+  end
+  # get "usuarios/new" sem devise
+  # get "usuarios/create"
   # cruds
-  resources :tarefas
   get "/tarefas/hoje", to: "tarefas#hoje", as: :tarefas_hoje
+  resources :tarefas
   resources :listas
   get "up" => "rails/health#show", as: :rails_health_check
-  # cadastro de usuarios
-  get  "/cadastro", to: "usuarios#new",    as: :cadastro
-  post "/usuarios", to: "usuarios#create", as: :usuarios
+  # cadastro de usuarios sem devise
+  # get  "/cadastro", to: "usuarios#new",    as: :cadastro
+  # post "/usuarios", to: "usuarios#create", as: :usuarios
 
-  # login sessoes
-  get    "/login",  to: "sessoes#new"
-  post   "/login",  to: "sessoes#create"
-  delete "/logout", to: "sessoes#destroy"
+  # login sessoes sem devise
+  # get    "/login",  to: "sessoes#new"
+  # post   "/login",  to: "sessoes#create"
+  # delete "/logout", to: "sessoes#destroy"
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

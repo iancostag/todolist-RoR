@@ -1,5 +1,5 @@
 class ListasController < ApplicationController
-  before_action :requer_login
+  before_action :authenticate_usuario!
   before_action :set_lista, only: %i[ show edit update destroy ]
 
   # GET /listas or /listas.json

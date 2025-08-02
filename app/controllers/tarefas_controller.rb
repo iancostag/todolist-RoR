@@ -1,6 +1,6 @@
 class TarefasController < ApplicationController
+  before_action :authenticate_usuario!
   before_action :set_tarefa, only: %i[ show edit update destroy ]
-
 
 # GET /tarefas or /tarefas.json
 def index
@@ -21,13 +21,14 @@ end
 
 
   def hoje
-  # Busca todas as tarefas do usuário com prazo HOJE
-  @dia = Date.today
-  @tarefas_hoje = current_usuario.listas
+    logger.warn ">>> ENTROU NA ACTION HOJE"
+    @dia = Date.today
+    @tarefas_hoje = current_usuario.listas
     .joins(:tarefas)
     .where("tarefas.prazo = ?", Date.today)
     .select("tarefas.*")
     .order("tarefas.concluida ASC, tarefas.created_at ASC")
+    render "hoje"
   end
 
 
@@ -78,16 +79,20 @@ end
   def destroy
     if @tarefa
       @tarefa.destroy!
-
       respond_to do |format|
-        format.html { redirect_to tarefas_path, status: :see_other, notice: "A tarefa foi excluida com sucesso!" }
+        format.html { redirect_to tarefas_path, status: :see_other, notice: "A tarefa foi excluída com sucesso!" }
         format.json { head :no_content }
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to tarefas_path, alert: "Ação não autorizada." }
+        format.json { head :forbidden }
       end
     end
   end
 
+
   private
-    # Use callbacks to share common setup or constraints between actions.
     def set_tarefa
       @tarefa = Tarefa.joins(:lista)
                       .where(listas: { usuario_id: current_usuario.id })
@@ -95,7 +100,7 @@ end
 
       unless @tarefa
         respond_to do |format|
-          format.html { redirect_to tarefas_path, alert: "Tarefa não encontrada ou não autorizada." }
+          format.html { redirect_to tarefas_path }
           format.json { head :not_found }
         end
       end

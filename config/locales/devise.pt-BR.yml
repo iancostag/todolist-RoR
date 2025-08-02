@@ -1,0 +1,32 @@
+pt-BR:
+  devise:
+    sessions:
+      signed_in: "Login efetuado com sucesso."
+      signed_out: "Logout efetuado com sucesso."
+      already_signed_out: "Logout já efetuado."
+    failure:
+      unauthenticated: "Você precisa estar logado para acessar esta página."
+      invalid: "Email ou senha inválidos."
+      not_found_in_database: "Email ou senha inválidos."
+      already_authenticated: "Você já está logado."
+    registrations:
+      signed_up: "Cadastro realizado com sucesso."
+      updated: "Atualização realizada com sucesso."
+      destroyed: "Sua conta foi removida com sucesso."
+    confirmations:
+      send_instructions: "Você receberá um e-mail com instruções para confirmar sua conta."
+      confirmed: "Sua conta foi confirmada com sucesso."
+    passwords:
+      send_instructions: "Você receberá um e-mail com instruções para redefinir sua senha."
+      updated: "Sua senha foi alterada com sucesso."
+    mailer:
+      confirmation_instructions:
+        subject: "Instruções para confirmação de cadastro"
+      reset_password_instructions:
+        subject: "Instruções para redefinição de senha"
+      unlock_instructions:
+        subject: "Instruções para desbloqueio"
+      email_changed:
+        subject: "E-mail alterado"
+      password_change:
+        subject: "Senha alterada"

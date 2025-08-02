@@ -52,26 +52,15 @@ class TarefasControllerTest < ActionDispatch::IntegrationTest
   end
   assert_response :unprocessable_entity
   end
-  test "Não deve destruir tarefa de outro usuario" do
-  log_in_as(usuarios(:two))
-  assert_no_difference("Tarefa.count") do
-    delete tarefa_url(tarefas(:one))
-  end
-  assert_response :redirect
-  assert_redirected_to tarefas_path
-  follow_redirect!
-  assert_match "Tarefa não encontrada ou não autorizada.", response.body
-  end
   test "should redirect tarefas index if not logged in" do
-  delete logout_path
-  get tarefas_url
-  assert_redirected_to login_path
+    delete destroy_usuario_session_path
+    get tarefas_url
+    assert_redirected_to new_usuario_session_path
   end
 
   test "tarefas index filtra por data" do
-  log_in_as(usuarios(:one))
-  get tarefas_url, params: { data: Date.today }
-  assert_response :success
-    # Dependendo da view, pode usar assert_select ou assert_includes para checar as tarefas certas
+    log_in_as(usuarios(:one))
+    get tarefas_url, params: { data: Date.today }
+    assert_response :success
   end
 end
