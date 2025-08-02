@@ -1,14 +1,20 @@
 Rails.application.routes.draw do
-  devise_for :usuarios
+  devise_for :usuarios, controllers: {
+  sessions: "usuarios/sessions",
+  registrations: "usuarios/registrations",
+  passwords: "usuarios/passwords",
+  confirmations: "usuarios/confirmations",
+  unlocks: "usuarios/unlocks"
+  }
 
   devise_scope :usuario do
-    root to: "devise/sessions#new"
+    root to: "tarefas#index"
   end
   # get "usuarios/new" sem devise
   # get "usuarios/create"
   # cruds
-  resources :tarefas
   get "/tarefas/hoje", to: "tarefas#hoje", as: :tarefas_hoje
+  resources :tarefas
   resources :listas
   get "up" => "rails/health#show", as: :rails_health_check
   # cadastro de usuarios sem devise
