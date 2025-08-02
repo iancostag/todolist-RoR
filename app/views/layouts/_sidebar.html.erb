@@ -6,7 +6,7 @@
       <p class="mb-1 text-white-50 small">Logado como:</p>
       <strong><%= current_usuario.email %></strong>
 
-      <%= button_to "Sair", logout_path, method: :delete, class: "btn btn-sm btn-outline-light mt-2" %>
+      <%= button_to "Sair", destroy_usuario_session_path, method: :delete, class: "btn btn-sm btn-outline-light mt-2" %>
     </div>
 
     <ul class="nav flex-column mb-4">

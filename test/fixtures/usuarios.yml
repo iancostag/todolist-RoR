@@ -1,7 +1,9 @@
 one:
   email: teste@email.com
-  password_digest: <%= BCrypt::Password.create("123456") %>
+  encrypted_password: <%= Devise::Encryptor.digest(Usuario, '123456') %>
+  confirmed_at: <%= Time.current %>
 
 two:
   email: teste2@example.com
-  password_digest: <%= BCrypt::Password.create('123456') %>
+  encrypted_password: <%= Devise::Encryptor.digest(Usuario, '123456') %>
+  confirmed_at: <%= Time.current %>

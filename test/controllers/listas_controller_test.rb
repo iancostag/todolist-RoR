@@ -68,7 +68,7 @@ class ListasControllerTest < ActionDispatch::IntegrationTest
   test "should redirect show if not logged in" do
     get lista_url(listas(:one))
     assert_response :redirect
-    assert_redirected_to login_path
+    assert_redirected_to new_usuario_session_path
   end
   test "should not create lista sem titulo" do
   log_in_as(usuarios(:one))

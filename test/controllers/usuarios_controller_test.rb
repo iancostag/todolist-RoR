@@ -2,12 +2,12 @@ require "test_helper"
 
 class UsuariosControllerTest < ActionDispatch::IntegrationTest
   test "should get new (formulário de cadastro)" do
-    get cadastro_path
+    get new_usuario_registration_path
     assert_response :success
   end
 
-  test "should create user with valid params" do
-    post usuarios_path, params: {
+  test "" do
+    post usuario_registration_path, params: {
       usuario: {
         email: "novo@email.com",
         password: "123456",
@@ -17,12 +17,12 @@ class UsuariosControllerTest < ActionDispatch::IntegrationTest
 
     assert_response :redirect
     follow_redirect!
-    assert_match "Conta criada com sucesso", response.body
+    assert_match "Por favor, confirme seu endereço de e-mail para continuar.", response.body
   end
 
   test "should not create user with invalid email" do
-  post usuarios_path, params: { usuario: { email: "", password: "123", password_confirmation: "321" } }
+  post usuario_registration_path, params: { usuario: { email: "", password: "123", password_confirmation: "321" } }
   assert_response :unprocessable_entity
-  assert_match "Erro ao criar conta", response.body
+  assert_match "Email não pode ficar em branco", response.body
   end
 end
