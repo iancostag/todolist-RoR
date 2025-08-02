@@ -29,10 +29,9 @@ O app estará disponível em: http://localhost:3000
 
 ## 3. Criando seu próprio usuário - Ambiente de dockerizado
 
+Rode esse comando para ter acesso aos logs para pegar o link de confirmação do e-mail
 ```
-se rodou docker compose up já rode:
-docker compose down
-docker compose up
+docker logs -f todolist-web
 ```
 Clique em "Cadastrar"
 <img width="1920" height="882" alt="image" src="https://github.com/user-attachments/assets/49663488-5f66-43cf-91fb-2734264210a1" />
