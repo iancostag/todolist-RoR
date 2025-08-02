@@ -8,6 +8,6 @@ done
 
 rm -f /app/tmp/pids/server.pid
 
-bundle exec rails db:create db:migrate || true
+bundle exec rails db:create db:migrate db:seed || true
 
 exec bundle exec rails server -b 0.0.0.0 -p 3000
