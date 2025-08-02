@@ -16,37 +16,60 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
-# puts "Limpando banco de dados..."
-# Tarefa.destroy_all
-# Lista.destroy_all
-# Usuario.destroy_all
+puts "Limpando banco de dados..."
+Tarefa.delete_all
+Lista.delete_all
+Usuario.delete_all
 
-# puts "Criando usuários, listas e tarefas..."
+puts "criando usuários"
+usuario1 = Usuario.create!(
+  email: "alice@email.com",
+  password: "123456",
+  password_confirmation: "123456",
+  confirmed_at: Time.current
+)
 
-# 2.times do |i|
-#   email = "usuario#{i + 1}@exemplo.com"
-#   senha = "senha123"
-#   usuario = Usuario.create!(
-#     email: "usuario#{i + 1}@exemplo.com",
-#     password: "senha123"
-#   )
-#   puts "Usuário criado: #{email} | Senha: #{senha}"
+usuario2 = Usuario.create!(
+  email: "ian@email.com",
+  password: "123456",
+  password_confirmation: "123456",
+  confirmed_at: Time.current
+)
 
+usuario3 = Usuario.create!(
+  email: "isabelaifm@hotmail.com",
+  password: "123456",
+  password_confirmation: "123456",
+  confirmed_at: Time.current
+)
+puts "criando listas extras,além das padrões"
+lista_extra1 = usuario1.listas.create!(
+  titulo: "Projetos da Faculdade",
+  descricao: "Organize suas tarefas acadêmicas"
+)
 
-#   2.times do |j|
-#     lista = usuario.listas.create!(
-#       titulo: "Lista #{j + 1} do #{usuario.email}"
-#     )
+lista_extra2 = usuario2.listas.create!(
+  titulo: "Trabalho",
+  descricao: "Tarefas profissionais"
+)
 
-#     3.times do |k|
-#       lista.tarefas.create!(
-#         titulo: "Tarefa #{k + 1} da #{lista.titulo}",
-#         descricao: "Descrição da tarefa #{k + 1}",
-#         prazo: Date.today + k.days,
-#         concluida: [ true, false ].sample
-#       )
-#     end
-#   end
-# end
+puts "Criando tarefas para usuários"
+usuario1.listas.each do |lista|
+  lista.tarefas.create!(
+    titulo: "Ler capítulo de Rails",
+    descricao: "Estudar Active Record e associações",
+    prazo: Date.today + 1,
+    concluida: false
+  )
+end
 
-# puts "Seed finalizada com sucesso!"
+usuario2.listas.each do |lista|
+  lista.tarefas.create!(
+    titulo: "Enviar relatório",
+    descricao: "Prazo final às 18h",
+    prazo: Date.today,
+    concluida: false
+  )
+end
+
+puts "Banco de dados criados com sucesso!"
