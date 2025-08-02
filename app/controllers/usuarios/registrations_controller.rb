@@ -3,7 +3,13 @@
 class Usuarios::RegistrationsController < Devise::RegistrationsController
   # before_action :configure_sign_up_params, only: [:create]
   # before_action :configure_account_update_params, only: [:update]
+  protected
 
+  # Esse método é chamado após cadastro de usuário que PRECISA confirmar o e-mail
+  def after_inactive_sign_up_path_for(resource)
+    # Redireciona para login com aviso amigável
+    new_usuario_session_path
+  end
   # GET /resource/sign_up
   # def new
   #   super
