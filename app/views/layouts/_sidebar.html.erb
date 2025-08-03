@@ -50,7 +50,7 @@
             <%= form_with model: Tarefa.new, url: tarefas_path, local: true do |form| %>
               <div class="mb-3">
                 <%= form.label :titulo, class: "form-label" %>
-                <%= form.text_field :titulo, class: "form-control", required:true %>
+                <%= form.text_field :titulo, class: "form-control", required:true, maxlength:40 %>
               </div>
 
               <div class="mb-3">
