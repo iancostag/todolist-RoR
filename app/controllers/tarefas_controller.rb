@@ -7,11 +7,10 @@ def index
   data_inicial = params[:data] ? Date.parse(params[:data]) : Date.today
   datas = (data_inicial..(data_inicial + 30)).to_a
 
-  tarefas = current_usuario.listas.joins(:tarefas)
-              .where("tarefas.prazo >= ?", data_inicial)
-
-
-  tarefas = tarefas.select("tarefas.*").order("tarefas.prazo ASC")
+  tarefas = Tarefa.joins(:lista)
+    .where("tarefas.prazo >= ?", data_inicial)
+    .where(listas: { usuario_id: current_usuario.id })
+    .order("tarefas.prazo ASC, listas.titulo ASC, tarefas.concluida ASC, tarefas.created_at ASC")
 
   tarefas_agrupadas = tarefas.group_by(&:prazo)
   @tarefas_por_dia = datas.map { |data| [ data, tarefas_agrupadas[data] || [] ] }.to_h
@@ -19,17 +18,13 @@ def index
 end
 
 
-
   def hoje
-    logger.warn ">>> ENTROU NA ACTION HOJE"
     @dia = Date.today
-    @tarefas_hoje = current_usuario.listas
-    .joins(:tarefas)
-    .where("tarefas.prazo = ?", Date.today)
-    .select("tarefas.*")
-    .order("tarefas.concluida ASC, tarefas.created_at ASC")
-    render "hoje"
+    @tarefas_hoje = Tarefa.joins(:lista)
+      .where(prazo: @dia, listas: { usuario_id: current_usuario.id })
+      .order("listas.titulo ASC", :concluida, :created_at)
   end
+
 
 
   # GET /tarefas/1 or /tarefas/1.json
@@ -55,7 +50,7 @@ end
 
     respond_to do |format|
       if @tarefa.save
-        format.html { redirect_to tarefas_path, notice: "Tarefa criada com sucesso!" }
+        format.html { redirect_to params[:tarefa][:redirect_to] || tarefas_path, notice: "Tarefa criada com sucesso!" }
         format.json { render :show, status: :created, location: @tarefa }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -67,12 +62,14 @@ end
   # PATCH/PUT /tarefas/1 or /tarefas/1.json
   def update
     @tarefa = Tarefa.find(params[:id])
+      logger.warn ">>>> REDIRECT_TO: #{params[:tarefa][:redirect_to]}"
     if @tarefa.update(tarefa_params)
-      redirect_to tarefas_path, notice: "Tarefa atualizada."
+      redirect_to params[:tarefa][:redirect_to] || tarefas_path, notice: "Tarefa atualizada."
     else
-      redirect_to tarefas_path, alert: "Erro ao atualizar tarefa."
+      redirect_to params[:tarefa][:redirect_to] || tarefas_path, alert: "Erro ao atualizar tarefa."
     end
   end
+
 
 
   # DELETE /tarefas/1 or /tarefas/1.json

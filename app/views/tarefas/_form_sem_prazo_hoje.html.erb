@@ -1,6 +1,6 @@
 <%= form_with model: Tarefa.new, url: tarefas_path, local: true do |form| %>
   <%= form.hidden_field :prazo, value: dia, data: { "modal-tarefa-target": "prazo" } %>
-  <%= form.hidden_field :redirect_to, value: tarefas_path %>
+  <%= form.hidden_field :redirect_to, value: tarefas_hoje_path %>
   <div class="mb-3">
     <%= form.label :titulo, class: "form-label" %>
     <%= form.text_field :titulo, class: "form-control",required: true,maxlength: 40 %>

@@ -10,11 +10,15 @@
     <% if @tarefas_hoje.any? %>
       <% @tarefas_hoje.each do |tarefa| %>
         <div class="d-flex align-items-center mb-2">
-          <%= form_with model: tarefa, scope: :tarefa,url: tarefa_path(tarefa), method: :patch, local: true do |form| %>
+          <%= form_with model: tarefa, scope: :tarefa, url: tarefa_path(tarefa), method: :patch, local: true do |form| %>
+            <%= form.hidden_field :redirect_to, value: tarefas_hoje_path %>
             <%= form.check_box :concluida, class: "form-check-input", onchange: "this.form.submit()" %>
           <% end %>
           <span class="ms-2 <%= 'text-decoration-line-through text-blue fst-italic' if tarefa.concluida %>">
             <%= tarefa.titulo %>
+            <span class="badge rounded-pill bg-secondary ms-2 small">
+              <%= tarefa.lista.titulo %>
+            </span>
           </span>
         </div>
       <% end %>
@@ -37,7 +41,7 @@
             <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
           </div>
           <div class="modal-body">
-            <%= render "tarefas/form_sem_prazo", dia: @dia %>
+            <%= render "tarefas/form_sem_prazo_hoje", dia: @dia %>
           </div>
         </div>
       </div>

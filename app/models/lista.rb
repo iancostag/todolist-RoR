@@ -1,5 +1,5 @@
 class Lista < ApplicationRecord
   belongs_to :usuario
   has_many :tarefas, dependent: :destroy
-  validates :titulo, presence: true
+  validates :titulo, presence: true, length: { maximum: 40 }
 end
