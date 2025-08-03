@@ -7,6 +7,9 @@ app = 'todolist-ror'
 primary_region = 'gru'
 console_command = '/rails/bin/rails console'
 
+[env]
+  PORT = "3000"
+  
 [build]
 
 
