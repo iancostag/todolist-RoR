@@ -7,6 +7,10 @@ Rails.application.routes.draw do
   unlocks: "usuarios/unlocks"
   }
 
+  unauthenticated do
+    root to: "home#index", as: :unauthenticated_root
+  end
+
   devise_scope :usuario do
     root to: "tarefas#index"
   end
