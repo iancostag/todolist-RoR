@@ -12,4 +12,7 @@ if [ -n "$DATABASE_URL" ]; then
   done
 fi
 
+echo "Rodando migrations..."
+bundle exec rails db:migrate
+
 exec "$@"
