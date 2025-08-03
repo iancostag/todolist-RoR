@@ -1,13 +1,15 @@
 #!/bin/bash
 set -e
 
-echo "Aguardando o banco de dados iniciar..."
-until pg_isready -h db -p 5432 -U postgres; do
-  sleep 1
-done
-
+echo "Removendo o arquivo de PID antigo, se existir..."
 rm -f /app/tmp/pids/server.pid
 
-bundle exec rails db:create db:migrate db:seed || true
+# Espera o banco estar pronto, se a URL existir
+if [ -n "$DATABASE_URL" ]; then
+  echo "Aguardando o banco de dados iniciar..."
+  until pg_isready -d "$DATABASE_URL"; do
+    sleep 1
+  done
+fi
 
-exec bundle exec rails server -b 0.0.0.0 -p 3000
+exec "$@"
