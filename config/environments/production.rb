@@ -29,6 +29,9 @@ Rails.application.configure do
     host: ENV.fetch("MAILER_HOST", "todolist-ror.fly.dev"),
     protocol: "https"
   }
+  config.action_mailer.default_options = {
+  from: ENV.fetch("MAILER_SENDER", "no-reply@todolist-ror.fly.dev")
+}
   config.action_mailer.smtp_settings = {
     address: ENV.fetch("SMTP_SERVER", "smtp.gmail.com"),
     port: ENV.fetch("SMTP_PORT", 587),
