@@ -47,7 +47,7 @@
               <small class="ms-2 text-white-50">(Prazo: <%= l(tarefa.prazo, format: "%b %-d") %>)</small>
             <% end %>
           </span>
-          <span class="ms-2">
+          <span class="ms-2 mr-2">
             <% if tarefa.concluida? %>
               <span class="badge bg-success">Concluída</span>
             <% elsif tarefa.prazo && tarefa.prazo < Date.today %>
@@ -56,7 +56,7 @@
               <span class="badge bg-warning text-dark">Pendente</span>
             <% end %>
           </span>
-          <div class="ms-auto d-flex gap-2">
+          <div class="ms-4 d-flex gap-2">
             <%= link_to "Editar", edit_tarefa_path(tarefa), class: "btn btn-sm btn-outline-primary" %>
             <button type="button" class="btn btn-sm btn-outline-danger" data-bs-toggle="modal" data-bs-target="#modal-excluir-tarefa-<%= tarefa.id %>">
               Excluir

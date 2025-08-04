@@ -13,6 +13,16 @@ body {
   background-color: var(--background);
   color: var(--text);
 }
+.card-title,
+.card-text,
+.tarefa-descricao,
+.tarefa-titulo,
+span,
+small {
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  max-width: 100%;
+}
 
 .card {
   background-color: var(--surface);
