@@ -62,15 +62,15 @@ end
   # PATCH/PUT /tarefas/1 or /tarefas/1.json
   def update
     @tarefa = Tarefa.find(params[:id])
-      logger.warn ">>>> REDIRECT_TO: #{params[:tarefa][:redirect_to]}"
+    logger.warn ">>>> REDIRECT_TO: #{params[:redirect_to] || params.dig(:tarefa, :redirect_to)}"
     if @tarefa.update(tarefa_params)
-      redirect_to params[:tarefa][:redirect_to] || tarefas_path, notice: "Tarefa atualizada."
+      redirect_path = params[:redirect_to].presence || params.dig(:tarefa, :redirect_to).presence || tarefas_path
+      redirect_to redirect_path, notice: "Tarefa atualizada."
     else
-      redirect_to params[:tarefa][:redirect_to] || tarefas_path, alert: "Erro ao atualizar tarefa."
+      redirect_path = params[:redirect_to].presence || params.dig(:tarefa, :redirect_to).presence || tarefas_path
+      redirect_to redirect_path, alert: "Erro ao atualizar tarefa."
     end
   end
-
-
 
   # DELETE /tarefas/1 or /tarefas/1.json
   def destroy
