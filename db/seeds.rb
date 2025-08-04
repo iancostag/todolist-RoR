@@ -22,6 +22,14 @@ Lista.delete_all
 Usuario.delete_all
 
 puts "criando usuários"
+
+usuario10 = Usuario.create!(
+  email: "danilo@gmail.com",
+  password: "654321",
+  password_confirmation: "654321",
+  confirmed_at: Time.current
+)
+
 usuario1 = Usuario.create!(
   email: "alice@email.com",
   password: "123456",
@@ -42,6 +50,13 @@ usuario3 = Usuario.create!(
   password_confirmation: "123456",
   confirmed_at: Time.current
 )
+usuario4 = Usuario.create!(
+  email: "avaliador@email.com",
+  password: "123456",
+  password_confirmation: "123456",
+  confirmed_at: Time.current
+)
+
 puts "criando listas extras,além das padrões"
 lista_extra1 = usuario1.listas.create!(
   titulo: "Projetos da Faculdade",
