@@ -1,7 +1,15 @@
 # TodoList
 
 Aplicação web para gerenciamento de tarefas, construída em **Ruby on Rails 8**, com autenticação de usuários e CRUD para listas/tarefas.
+A todolist está rodando no endereço : https://todolist-ror.fly.dev/
+Basta logar e acessar com uma das credenciais abaixo:
+ian@email.com 
+123456
+ou
+alice@email.com
+123456
 
+Se quiser rodar via docker, siga as instruções abaixo:
 ## Pré-requisitos
 
 - [Docker](https://www.docker.com/)
@@ -9,7 +17,7 @@ Aplicação web para gerenciamento de tarefas, construída em **Ruby on Rails 8*
 
 ## Como rodar o projeto e Testar
 
-### 1. Clone o repositório
+### 1. Clone o repositório ( Branch Main )
 
 ```bash
 git clone https://github.com/iancostag/todolist-RoR.git
