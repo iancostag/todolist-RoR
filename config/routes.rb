@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   get "/tarefas/hoje", to: "tarefas#hoje", as: :tarefas_hoje
   resources :tarefas
   resources :listas
-    get "paginas/sobre"
+  get "/sobre", to: "paginas#sobre", as: :sobre
   get "up" => "rails/health#show", as: :rails_health_check
   # cadastro de usuarios sem devise
   # get  "/cadastro", to: "usuarios#new",    as: :cadastro
