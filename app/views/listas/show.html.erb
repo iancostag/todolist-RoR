@@ -36,6 +36,7 @@
       <% @lista.tarefas.order(:concluida, :prazo, :created_at).each do |tarefa| %>
         <div class="d-flex align-items-center mb-2">
           <%= form_with model: tarefa, url: tarefa_path(tarefa), method: :patch, local: true do |form| %>
+            <%= hidden_field_tag :redirect_to, request.fullpath %>
             <%= form.check_box :concluida, class: "form-check-input", onchange: "this.form.submit()" %>
           <% end %>
           <span class="ms-2 <%= 'text-decoration-line-through text-blue fst-italic' if tarefa.concluida %>">
