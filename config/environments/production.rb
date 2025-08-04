@@ -30,8 +30,8 @@ Rails.application.configure do
     protocol: "https"
   }
   config.action_mailer.default_options = {
-  from: ENV.fetch("MAILER_SENDER", "no-reply@todolist-ror.fly.dev")
-}
+    from: ENV.fetch("MAILER_SENDER", "todolistrorian@gmail.com")
+  }
   config.action_mailer.smtp_settings = {
     address: ENV.fetch("SMTP_SERVER", "smtp.gmail.com"),
     port: ENV.fetch("SMTP_PORT", 587),
@@ -41,6 +41,7 @@ Rails.application.configure do
     authentication: "plain",
     enable_starttls_auto: true
   }
+
 
   config.i18n.fallbacks = true
   config.active_record.dump_schema_after_migration = false
