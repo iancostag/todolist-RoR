@@ -3,13 +3,16 @@
     <div class="col-12 col-md-6 col-lg-4" style="min-width: 320px;">
       <!-- Cabeçalho da coluna -->
       <div class="mb-3 pb-2 border-bottom border-secondary d-flex flex-column align-items-start">
-        <strong><%= l(dia, format: "%b %-d • %A") %></strong>
-        <% if dia == Date.today %>
-          <span class="text-muted small">• Hoje</span>
-        <% elsif dia == Date.tomorrow %>
-          <span class="text-muted small">• Amanhã</span>
-        <% end %>
-      </div>
+        <strong>
+            <%= l(dia, format: "%b %-d • %A") %>
+            <% tags = [] %>
+            <% tags << "Hoje" if dia == Date.today %>
+            <% tags << "Amanhã" if dia == Date.tomorrow %>
+            <% if tags.any? %>
+            <span class="text-muted small">• <%= tags.join(" • ") %></span>
+            <% end %>
+        </strong>
+        </div>
 
       <!-- Lista de tarefas -->
       <div class="d-flex flex-column gap-2">
