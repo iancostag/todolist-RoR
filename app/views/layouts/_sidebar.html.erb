@@ -50,31 +50,39 @@
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
             </div>
             <div class="modal-body text-white">
-              <%= form_with model: Tarefa.new, url: tarefas_path, local: true do |form| %>
-                <div class="mb-3">
-                  <%= form.label :titulo, class: "form-label" %>
-                  <%= form.text_field :titulo, class: "form-control", required:true, maxlength:40 %>
-                </div>
-                <div class="mb-3">
-                  <%= form.label :descricao, class: "form-label" %>
-                  <%= form.text_area :descricao, class: "form-control", maxlength: 250  %>
-                </div>
-                <div class="row">
-                  <div class="col-md-4">
-                    <%= form.label :prazo, class: "form-label" %>
-                    <%= form.date_field :prazo, class: "form-control" %>
+              <% begin %>
+                <%= form_with model: Tarefa.new, url: tarefas_path, local: true do |form| %>
+                  <div class="mb-3">
+                    <%= form.label :titulo, class: "form-label" %>
+                    <%= form.text_field :titulo, class: "form-control", required:true, maxlength:40 %>
                   </div>
-                  <div class="col-md-4">
-                    <%= form.label :lista_id, "Lista", class: "form-label" %>
-                    <%= form.collection_select :lista_id, current_usuario.listas, :id, :titulo, {}, class: "form-select", required:true %>
+                  <div class="mb-3">
+                    <%= form.label :descricao, class: "form-label" %>
+                    <%= form.text_area :descricao, class: "form-control", maxlength: 250  %>
                   </div>
-                </div>
-                <div class="mt-4 d-flex justify-content-end gap-2">
-                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                  <%= form.submit "Adicionar tarefa", class: "btn btn-primary" %>
+                  <div class="row">
+                    <div class="col-md-4">
+                      <%= form.label :prazo, class: "form-label" %>
+                      <%= form.date_field :prazo, class: "form-control" %>
+                    </div>
+                    <div class="col-md-4">
+                      <%= form.label :lista_id, "Lista", class: "form-label" %>
+                      <%= form.collection_select :lista_id, (current_usuario&.listas || []), :id, :titulo, {}, class: "form-select", required:true %>
+                    </div>
+                  </div>
+                  <div class="mt-4 d-flex justify-content-end gap-2">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
+                    <%= form.submit "Adicionar tarefa", class: "btn btn-primary" %>
+                  </div>
+                <% end %>
+              <% rescue => e %>
+                <div class="alert alert-danger">
+                  Erro ao renderizar o formulário da tarefa.<br>
+                  <small><%= e.message %></small>
                 </div>
               <% end %>
             </div>
+
           </div>
         </div>
       </div>
