@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   # before_action :requer_login
   # private
   def after_sign_in_path_for(resource)
-    tarefas_hoje_path
+    sobre_path
   end
   # def current_usuario
   #  @current_usuario ||= Usuario.find_by(id: session[:usuario_id])
