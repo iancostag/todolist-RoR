@@ -1,4 +1,5 @@
 class TarefasController < ApplicationController
+  layout "dashboard"
   before_action :authenticate_usuario!
   before_action :set_tarefa, only: %i[ show edit update destroy ]
 
