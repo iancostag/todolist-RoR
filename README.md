@@ -2,16 +2,10 @@
 
 Aplicação web para gerenciamento de tarefas, construída em **Ruby on Rails 8**, com autenticação de usuários e CRUD para listas/tarefas.
 A todolist está rodando no endereço : https://todolist-ror.fly.dev/
-Basta logar e acessar com uma das credenciais abaixo:
-ian@email.com 
-123456
-ou
-alice@email.com
-123456
 
 Se quiser rodar via docker, siga as instruções abaixo:
 ## Pré-requisitos
-
+- Estar na branch main e não produção
 - [Docker](https://www.docker.com/)
 - [Docker Compose](https://docs.docker.com/compose/)
 
@@ -35,25 +29,6 @@ O script entrypoint.sh aguarda o banco de dados, cria e migra o banco antes de i
 
 O app estará disponível em: http://localhost:3000
 
-## 3. Criando seu próprio usuário - Ambiente de dockerizado
-
-Rode esse comando para ter acesso aos logs para pegar o link de confirmação do e-mail
-```
-docker logs -f todolist-web
-```
-Clique em "Cadastrar"
-<img width="1920" height="882" alt="image" src="https://github.com/user-attachments/assets/49663488-5f66-43cf-91fb-2734264210a1" />
-
-Preencha os campos.
-<img width="1920" height="882" alt="image" src="https://github.com/user-attachments/assets/f601be50-4060-4e08-bc07-650d0e140d61" />
-
-Após enviar, você será rediorecionado para essa página.
-
-<img width="1920" height="882" alt="image" src="https://github.com/user-attachments/assets/d20485da-13a6-48ea-b29b-0f1f20127018" />
-
-No terminal em que está visualizando os logs, procure pelo link de confirmação, que irá aparecer nesse formato:
-<img width="1920" height="65" alt="image" src="https://github.com/user-attachments/assets/48b59958-b04a-4ef3-9109-2fe0dd0bcac4" />
-Agora basta logar com sua conta com as credenciais que você colocou!
 
 Rodando testes
 
