@@ -8,7 +8,9 @@
   --text: #ffffff;
   --text-muted: #bbb;
 }
-
+main.flex-grow-1 {
+  margin-left: 250px; 
+}
 body {
   background-color: var(--background);
   color: var(--text);
@@ -265,4 +267,8 @@ a:hover {
 
 .btn-close {
   filter: invert(1) grayscale(1) brightness(1.8); 
+}
+
+.lista-sidebar{
+  max-width: 250px;
 }

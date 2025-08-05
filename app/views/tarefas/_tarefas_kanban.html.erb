@@ -1,0 +1,56 @@
+
+  <div class="row g-4">
+    <% @tarefas_por_dia.each do |dia, tarefas| %>
+      <div class="col-12 col-md-6 col-lg-4" style="min-width: 320px;">
+        <!-- Cabeçalho da coluna -->
+        <div class="mb-3 pb-2 border-bottom border-secondary d-flex flex-column align-items-start">
+          <strong><%= l(dia, format: "%b %-d • %A") %></strong>
+          <% if dia == Date.today %>
+            <span class="text-muted small">• Hoje</span>
+          <% elsif dia == Date.tomorrow %>
+            <span class="text-muted small">• Amanhã</span>
+          <% end %>
+        </div>
+
+        <!-- Lista de tarefas -->
+        <div class="d-flex flex-column gap-2">
+          <% tarefas.each do |tarefa| %>
+            <div class="d-flex align-items-center bg-surface rounded p-2 shadow-sm">
+              <%= form_with model: tarefa, scope: :tarefa, url: tarefa_path(tarefa), method: :patch, local: true do |form| %>
+                <%= form.hidden_field :redirect_to, value: tarefas_path(data: @data_inicial) %>
+                <%= form.check_box :concluida, class: "form-check-input", onchange: "this.form.submit()" %>
+              <% end %>
+              <span class="ms-2 <%= 'text-decoration-line-through text-blue fst-italic' if tarefa.concluida %>">
+                <%= tarefa.titulo %>
+                <span class="badge rounded-pill bg-secondary ms-2 small">
+                  <%= tarefa.lista.titulo %>
+                </span>
+              </span>
+            </div>
+          <% end %>
+        </div>
+
+        <div class="mt-3">
+          <%= link_to "+ Adicionar tarefa", "#",
+            class: "btn btn-link text-danger p-0",
+            data: { bs_toggle: "modal", bs_target: "#modalNovaTarefa-#{dia}" } %>
+        </div>
+
+        <!-- Modal Nova Tarefa -->
+        <div class="modal fade" id="modalNovaTarefa-<%= dia %>" tabindex="-1" 
+            aria-labelledby="modalNovaTarefaLabel-<%= dia %>" aria-hidden="true">
+          <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content bg-dark text-white">
+              <div class="modal-header">
+                <h5 class="modal-title" id="modalNovaTarefaLabel-<%= dia %>">Nova Tarefa</h5>
+                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Fechar"></button>
+              </div>
+              <div class="modal-body">
+                <%= render "tarefas/form_sem_prazo", dia: dia %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>

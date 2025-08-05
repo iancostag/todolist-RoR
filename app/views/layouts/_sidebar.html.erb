@@ -1,5 +1,5 @@
 <% if current_usuario %>
-  <aside class="bg-dark text-white p-3" style="width: 250px; min-height: 100vh;">
+  <aside class="bg-dark text-white p-3 position-fixed" style="width: 250px; min-height: 100vh;">
     <h5 class="mb-4">Meu TodoList</h5>
 
     <div class="mb-4">
@@ -26,7 +26,7 @@
       <% current_usuario.listas.each do |lista| %>
         <% if lista.persisted?%>
           <li class="nav-item">
-            <%= link_to "🗂 #{lista.titulo}", lista_path(lista), class: "nav-link text-white" %>
+            <%= link_to "🗂 #{lista.titulo}", lista_path(lista), class: "nav-link text-white lista-sidebar" %>
           </li>
         <% end %>
       <% end %>
