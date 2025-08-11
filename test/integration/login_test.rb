@@ -15,7 +15,7 @@ class LoginTest < ActionDispatch::IntegrationTest
 
   test "login com credenciais válidas" do
     post usuario_session_path, params: { usuario: { email: @usuario.email, password: "123456" } }
-    assert_redirected_to tarefas_hoje_path
+    assert_redirected_to sobre_path
     follow_redirect!
   end
 
